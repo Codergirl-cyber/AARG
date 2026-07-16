@@ -11,6 +11,7 @@ import Magnetic from "@/components/Magnetic";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [logoError, setLogoError] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -62,15 +63,64 @@ export default function Header() {
           {/* Brand Logo */}
           <Link
             href="/"
-            className="font-display font-bold text-lg md:text-xl tracking-wider text-secondary-accent flex items-center gap-2 group focus-hud"
+            className="flex items-center gap-3 group focus-hud"
           >
-            <span className="text-primary-accent group-hover:text-secondary-accent transition-colors duration-250 font-mono">
-              [+]
-            </span>
-            {siteConfig.name}
-            <span className="text-[9px] font-mono text-secondary-accent/40 font-normal tracking-normal ml-1 hidden sm:inline">
-              SYS_ACTIVE
-            </span>
+            {/* Logo Container */}
+            <div className="relative w-11 h-11 flex-shrink-0 bg-black/40 border border-white/10 rounded-lg p-1.5 flex items-center justify-center transition-all duration-300 group-hover:border-primary-accent/40 group-hover:shadow-[0_0_12px_rgba(180,77,11,0.2)]">
+              {!logoError ? (
+                <img
+                  src="/logo.png"
+                  alt="AARG Logo"
+                  className="w-full h-full object-contain"
+                  onError={() => setLogoError(true)}
+                />
+              ) : (
+                <svg
+                  viewBox="0 0 100 100"
+                  className="w-full h-full text-primary-accent"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
+                  <circle cx="50" cy="50" r="41" stroke="currentColor" strokeWidth="1" opacity="0.4" />
+                  <path
+                    d="M50 20C50 20 44 38 44 55C44 62 48 66 50 66C52 66 56 62 56 55C56 38 50 20 50 20Z"
+                    fill="currentColor"
+                    opacity="0.85"
+                  />
+                  <path
+                    d="M44 48C40 50 35 55 35 60C35 63 39 63 43 61L44 58"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M56 48C60 50 65 55 65 60C65 63 61 63 57 61L56 58"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M47 68C47 68 50 78 50 78C50 78 53 68 53 68C53 68 51.5 70 50 70C48.5 70 47 68 47 68Z"
+                    fill="currentColor"
+                  />
+                  <circle cx="32" cy="35" r="1.5" fill="currentColor" opacity="0.7" />
+                  <circle cx="68" cy="35" r="1.5" fill="currentColor" opacity="0.7" />
+                </svg>
+              )}
+            </div>
+
+            {/* Text Container */}
+            <div className="flex flex-col justify-center">
+              <span className="font-sans font-extrabold text-lg md:text-xl leading-none text-white tracking-wider transition-colors duration-250 group-hover:text-primary-accent">
+                AARG
+              </span>
+              <span className="font-mono text-[8px] md:text-[9px] tracking-[0.15em] text-secondary-accent/60 leading-none mt-1 uppercase font-medium">
+                Advanced Aerial Robotics Group
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation Link Strip */}

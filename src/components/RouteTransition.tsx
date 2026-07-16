@@ -135,12 +135,11 @@ export default function RouteTransition({ children }: RouteTransitionProps) {
           }}
           className="relative w-full flex-grow flex flex-col"
         >
-          {/* Flicker wipe boot effect overlay on render */}
           <motion.div
             initial={{ height: "100%" }}
             animate={{ height: "0%" }}
             transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-x-0 top-0 bg-primary-accent/10 z-45 pointer-events-none border-b border-primary-accent/30"
+            className="fixed inset-x-0 top-0 bg-primary-accent/10 z-45 pointer-events-none"
           />
           {children}
         </motion.div>

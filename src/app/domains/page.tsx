@@ -44,62 +44,9 @@ export default function Domains() {
   const shouldReduceMotion = useReducedMotion();
   // Default to first domain selected
   const [selectedDomainId, setSelectedDomainId] = useState<string>(domains[0].id);
-  const [lines, setLines] = useState<Array<{ from: { x: number; y: number }; to: { x: number; y: number } }>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const selectedDomain = domains.find((d) => d.id === selectedDomainId)!;
-
-  // Calculate coordinates for connection lines (domain panel → vehicle dossier)
-  const calculateLines = () => {
-    if (!selectedDomainId || !containerRef.current || shouldReduceMotion) {
-      setLines([]);
-      return;
-    }
-    const containerRect = containerRef.current.getBoundingClientRect();
-    const panelEl = document.getElementById("domain-panel");
-    if (!panelEl) return;
-    const panelRect = panelEl.getBoundingClientRect();
-
-    const relatedVids = domainToVehicles[selectedDomainId] || [];
-    const newLines = relatedVids
-      .map((vid) => {
-        const vehicleEl = document.getElementById(`vehicle-card-${vid}`);
-        if (!vehicleEl) return null;
-        const vehicleRect = vehicleEl.getBoundingClientRect();
-
-        const x1 = panelRect.left - containerRect.left + panelRect.width / 2;
-        const y1 = panelRect.bottom - containerRect.top;
-        const x2 = vehicleRect.left - containerRect.left + vehicleRect.width / 2;
-        const y2 = vehicleRect.top - containerRect.top;
-
-        return { from: { x: x1, y: y1 }, to: { x: x2, y: y2 } };
-      })
-      .filter(Boolean) as Array<{ from: { x: number; y: number }; to: { x: number; y: number } }>;
-
-    setLines(newLines);
-  };
-
-  useEffect(() => {
-    if (shouldReduceMotion) return;
-    let animId: number;
-    let startTime = Date.now();
-
-    const updateLoop = () => {
-      calculateLines();
-      if (Date.now() - startTime < 600) {
-        animId = requestAnimationFrame(updateLoop);
-      }
-    };
-    updateLoop();
-    window.addEventListener("resize", calculateLines);
-    window.addEventListener("scroll", calculateLines);
-    return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener("resize", calculateLines);
-      window.removeEventListener("scroll", calculateLines);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedDomainId, shouldReduceMotion]);
 
   return (
     <div
@@ -109,39 +56,6 @@ export default function Domains() {
       {/* HUD Background Overlays */}
       <div className="absolute inset-0 hud-grid pointer-events-none opacity-30" />
       <div className="absolute inset-0 hud-grid-fine pointer-events-none opacity-20" />
-
-      {/* SVG Connecting Lines Overlay */}
-      {!shouldReduceMotion && lines.length > 0 && (
-        <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
-          {lines.map((line, index) => {
-            const { from, to } = line;
-            const midY = from.y + (to.y - from.y) * 0.45;
-            const pathD = `M ${from.x} ${from.y} L ${from.x} ${midY} L ${to.x} ${midY} L ${to.x} ${to.y}`;
-            return (
-              <g key={index}>
-                <motion.path
-                  d={pathD} stroke="#b44d0b" strokeWidth="3" fill="none"
-                  className="opacity-20 blur-[2px]"
-                  initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                />
-                <motion.path
-                  d={pathD} stroke="#b44d0b" strokeWidth="1" fill="none"
-                  strokeDasharray="4 4" className="opacity-50"
-                  initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                />
-                <motion.path
-                  d={pathD} stroke="#ffffff" strokeWidth="2" fill="none"
-                  strokeDasharray="6 80"
-                  animate={{ strokeDashoffset: [-150, 150] }}
-                  transition={{ repeat: Infinity, duration: 2.2, ease: "linear" }}
-                />
-              </g>
-            );
-          })}
-        </svg>
-      )}
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
         
@@ -368,7 +282,7 @@ export default function Domains() {
                     )}
 
                     {/* Left: large image + identity */}
-                    <div className={`lg:col-span-5 flex flex-col gap-0 py-8 md:py-10 ${index % 2 === 0 ? "lg:pr-10" : "lg:pl-10 lg:order-2"}`}>
+                    <div className={`lg:col-span-5 flex flex-col gap-0 py-8 md:py-10 px-6 md:px-10 ${index % 2 === 0 ? "lg:pl-10 lg:pr-10" : "lg:pl-10 lg:pr-10 lg:order-2"}`}>
                       {/* Image area */}
                       <div className="relative aspect-video w-full border border-secondary-accent/12 bg-surface/50 mb-6 overflow-hidden">
                         <div className="hud-corner hud-corner-tl" />
@@ -404,7 +318,7 @@ export default function Domains() {
                     </div>
 
                     {/* Right: spec rows + description + features */}
-                    <div className={`lg:col-span-7 flex flex-col gap-6 py-8 md:py-10 ${index % 2 === 0 ? "lg:pl-10 lg:border-l border-secondary-accent/12" : "lg:pr-10 lg:border-r border-secondary-accent/12"}`}>
+                    <div className={`lg:col-span-7 flex flex-col gap-6 py-8 md:py-10 px-6 md:px-10 ${index % 2 === 0 ? "lg:pl-10 lg:pr-10 lg:border-l border-secondary-accent/12" : "lg:pl-10 lg:pr-10 lg:border-r border-secondary-accent/12"}`}>
                       
                       <p className="font-sans text-sm md:text-base text-secondary-accent/80 leading-relaxed">
                         {vehicle.description}
