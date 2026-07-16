@@ -52,8 +52,8 @@ export default function Gallery() {
             <span className="w-1.5 h-1.5 bg-primary-accent" />
             {"/// FIELD_IMAGE_ARCHIVES // IMAGING"}
           </span>
-          <h1 className="font-display text-4xl md:text-5xl font-extrabold text-secondary-accent uppercase tracking-tight mt-2">
-            MISSION GRAPHICS
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
+            Mission Graphics
           </h1>
           <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
             {"MEDIA CAPTURES // FLIGHTS, BUILDS & ARENAS"}

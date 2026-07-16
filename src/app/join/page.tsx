@@ -65,8 +65,8 @@ export default function Join() {
             <span className="w-1.5 h-1.5 bg-primary-accent" />
             <DecryptText text="/// SQUADRON_RECRUITMENT // JOIN" />
           </span>
-          <h1 className="font-display text-4xl md:text-5xl font-extrabold text-secondary-accent uppercase tracking-tight mt-2">
-            RECRUITMENT COMMAND
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
+            Recruitment Command
           </h1>
           <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
             {"SELECTION GATEWAYS // FLIGHT CADRE RECRUITING ACTIVE"}
@@ -81,13 +81,13 @@ export default function Join() {
             <ScrollReveal>
               <div className="flex flex-col gap-5">
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-4xl font-extrabold text-primary-accent leading-none opacity-80">01</span>
+                  <span className="font-mono text-2xl font-semibold text-primary-accent leading-none opacity-70">01</span>
                   <div className="hud-divider-v" style={{ height: "2rem" }} />
                   <span className="font-mono text-[10px] text-primary-accent/70 uppercase tracking-widest">Recruitment Call</span>
                 </div>
                 <div className="hud-divider-h" />
-                <h2 className="font-display text-2xl md:text-3xl font-extrabold text-secondary-accent uppercase tracking-tight">
-                  WHY JOIN AARG?
+                <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
+                  Why Join AARG?
                 </h2>
                 <div className="font-sans text-sm md:text-base text-secondary-accent/85 space-y-4 leading-relaxed max-w-xl">
                   <p>
@@ -146,7 +146,7 @@ export default function Join() {
                 <div className="grid grid-cols-12 gap-6 items-start">
                   {/* Step number + connector line */}
                   <div className="col-span-2 flex flex-col items-center">
-                    <span className="font-mono text-4xl md:text-5xl font-extrabold text-primary-accent leading-none">
+                    <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">
                       {step.step}
                     </span>
                     {idx < timelineSteps.length - 1 && (
@@ -178,8 +178,8 @@ export default function Join() {
         <div className="flex flex-col gap-8 max-w-3xl mx-auto w-full">
           <div className="flex flex-col gap-2">
             <span className="font-mono text-[10px] text-primary-accent tracking-widest uppercase font-bold">{"// RECRUITMENT_FAQ"}</span>
-            <h3 className="font-display text-2xl font-extrabold text-secondary-accent uppercase tracking-wider">
-              FREQUENTLY ASKED QUESTIONS
+            <h3 className="font-display text-xl font-bold text-secondary-accent uppercase tracking-wider">
+              Frequently Asked Questions
             </h3>
             <div className="hud-divider-h" />
           </div>

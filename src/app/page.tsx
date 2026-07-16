@@ -65,12 +65,12 @@ export default function Home() {
             </div>
 
             {/* Main Taglines */}
-            <h1 className="font-display text-4xl md:text-6xl font-extrabold tracking-tight text-secondary-accent leading-none uppercase">
-              DESIGNING, BUILDING, <br />
+            <h1 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight text-secondary-accent leading-tight">
+              Designing, Building, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-accent via-primary-accent/80 to-secondary-accent">
-                AND FLYING
+                and Flying
               </span> <br />
-              NEXT-GEN UAVs.
+              Next-Gen UAVs.
             </h1>
 
             <p className="text-secondary-accent/80 text-base md:text-lg font-sans leading-relaxed max-w-xl">
@@ -121,7 +121,7 @@ export default function Home() {
               <ScrollReveal delay={0.1}>
                 <div className="flex flex-col items-start px-0 sm:pr-8 py-4 sm:py-0 border-b sm:border-b-0 sm:border-r border-secondary-accent/12">
                   <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-5xl md:text-7xl font-display font-extrabold text-primary-accent tracking-tight leading-none">
+                    <span className="text-4xl md:text-5xl font-display font-bold text-primary-accent tracking-tight leading-none">
                       <AnimatedCounter value={siteConfig.memberCount} onComplete={() => setStat1Comp(true)} />
                     </span>
                     <motion.div
@@ -140,7 +140,7 @@ export default function Home() {
               <ScrollReveal delay={0.2}>
                 <div className="flex flex-col items-start px-0 sm:px-8 py-4 sm:py-0 border-b sm:border-b-0 sm:border-r border-secondary-accent/12">
                   <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-5xl md:text-7xl font-display font-extrabold text-primary-accent tracking-tight leading-none">
+                    <span className="text-4xl md:text-5xl font-display font-bold text-primary-accent tracking-tight leading-none">
                       <AnimatedCounter value={siteConfig.yearsActive} onComplete={() => setStat2Comp(true)} />
                     </span>
                     <motion.div
@@ -159,7 +159,7 @@ export default function Home() {
               <ScrollReveal delay={0.3}>
                 <div className="flex flex-col items-start px-0 sm:px-8 py-4 sm:py-0 border-b sm:border-b-0 sm:border-r border-secondary-accent/12">
                   <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-5xl md:text-7xl font-display font-extrabold text-primary-accent tracking-tight leading-none">
+                    <span className="text-4xl md:text-5xl font-display font-bold text-primary-accent tracking-tight leading-none">
                       <AnimatedCounter value={siteConfig.competitionsWon} onComplete={() => setStat3Comp(true)} />
                     </span>
                     <motion.div
@@ -178,7 +178,7 @@ export default function Home() {
               <ScrollReveal delay={0.4}>
                 <div className="flex flex-col items-start px-0 sm:pl-8 py-4 sm:py-0">
                   <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-5xl md:text-7xl font-display font-extrabold text-primary-accent tracking-tight leading-none">
+                    <span className="text-4xl md:text-5xl font-display font-bold text-primary-accent tracking-tight leading-none">
                       <AnimatedCounter value="5" onComplete={() => setStat4Comp(true)} />
                     </span>
                     <motion.div
@@ -205,8 +205,8 @@ export default function Home() {
             <span className="font-mono text-xs text-primary-accent tracking-widest uppercase">
               <DecryptText text="// MISSION OPERATIONAL MANIFESTO" />
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-extrabold text-secondary-accent uppercase mt-2">
-              HOW WE DEFINE OUR STRATEGIC PURPOSE
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-secondary-accent uppercase mt-2">
+              How We Define Our Strategic Purpose
             </h2>
           </div>
 
@@ -214,7 +214,7 @@ export default function Home() {
           <ScrollReveal delay={0.1}>
             <div className="grid grid-cols-12 gap-6 md:gap-12 py-10 md:py-14 border-t border-secondary-accent/15 items-start">
               <div className="col-span-12 md:col-span-2 flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
-                <span className="font-mono text-5xl md:text-7xl font-extrabold text-primary-accent leading-none opacity-90">01</span>
+                <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">01</span>
                 <div className="hud-divider-v md:hidden" style={{height: '2rem'}} />
                 <span className="font-mono text-[10px] text-primary-accent/60 uppercase tracking-widest md:mt-3">The Mission</span>
               </div>
@@ -222,7 +222,7 @@ export default function Home() {
                 <div className="hud-divider-v" style={{minHeight: '100%', height: '100%'}} />
               </div>
               <div className="col-span-12 md:col-span-9 flex flex-col gap-3">
-                <h3 className="font-display text-xl md:text-2xl font-extrabold text-secondary-accent uppercase tracking-tight">WHAT WE DO</h3>
+                <h3 className="font-display text-lg md:text-xl font-bold text-secondary-accent uppercase tracking-tight">What We Do</h3>
                 <p className="text-secondary-accent/75 font-sans text-sm md:text-base leading-relaxed max-w-2xl">
                   AARG designs, simulates, builds, and flies UAV systems from the ground up. 
                   Our team engineers specialized cargo planes and drone delivery platforms designed to transport payloads, pack into tactical boxes, and operate fully autonomously.
@@ -235,7 +235,7 @@ export default function Home() {
           <ScrollReveal delay={0.15}>
             <div className="grid grid-cols-12 gap-6 md:gap-12 py-10 md:py-14 border-t border-secondary-accent/15 items-start">
               <div className="col-span-12 md:col-span-2 flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
-                <span className="font-mono text-5xl md:text-7xl font-extrabold text-primary-accent leading-none opacity-90">02</span>
+                <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">02</span>
                 <div className="hud-divider-v md:hidden" style={{height: '2rem'}} />
                 <span className="font-mono text-[10px] text-primary-accent/60 uppercase tracking-widest md:mt-3">The Method</span>
               </div>
@@ -243,7 +243,7 @@ export default function Home() {
                 <div className="hud-divider-v" style={{minHeight: '100%', height: '100%'}} />
               </div>
               <div className="col-span-12 md:col-span-9 flex flex-col gap-3">
-                <h3 className="font-display text-xl md:text-2xl font-extrabold text-secondary-accent uppercase tracking-tight">HOW WE DO IT</h3>
+                <h3 className="font-display text-lg md:text-xl font-bold text-secondary-accent uppercase tracking-tight">How We Do It</h3>
                 <p className="text-secondary-accent/75 font-sans text-sm md:text-base leading-relaxed max-w-2xl">
                   We employ rigorous aerospace methods: computational fluid dynamics (CFD) for aerodynamics, composite laminates and stress analysis for fabrication, and hardware-in-the-loop autopilot tuning for controls.
                 </p>
@@ -255,7 +255,7 @@ export default function Home() {
           <ScrollReveal delay={0.2}>
             <div className="grid grid-cols-12 gap-6 md:gap-12 py-10 md:py-14 border-t border-b border-secondary-accent/15 items-start">
               <div className="col-span-12 md:col-span-2 flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
-                <span className="font-mono text-5xl md:text-7xl font-extrabold text-primary-accent leading-none opacity-90">03</span>
+                <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">03</span>
                 <div className="hud-divider-v md:hidden" style={{height: '2rem'}} />
                 <span className="font-mono text-[10px] text-primary-accent/60 uppercase tracking-widest md:mt-3">The Motivation</span>
               </div>
@@ -263,7 +263,7 @@ export default function Home() {
                 <div className="hud-divider-v" style={{minHeight: '100%', height: '100%'}} />
               </div>
               <div className="col-span-12 md:col-span-9 flex flex-col gap-3">
-                <h3 className="font-display text-xl md:text-2xl font-extrabold text-secondary-accent uppercase tracking-tight">WHY WE DO IT</h3>
+                <h3 className="font-display text-lg md:text-xl font-bold text-secondary-accent uppercase tracking-tight">Why We Do It</h3>
                 <p className="text-secondary-accent/75 font-sans text-sm md:text-base leading-relaxed max-w-2xl">
                   To cultivate industry-ready systems engineers, UAV pilots, and business strategists. We seek to push the envelope of autonomous flight and claim top placements on national-level drone arenas.
                 </p>
@@ -283,8 +283,8 @@ export default function Home() {
             <span className="font-mono text-xs text-primary-accent tracking-widest uppercase">
               <DecryptText text="// TECHNICAL DOMAINS // INTERACTIVE SYSTEMS MAP" />
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-extrabold text-secondary-accent uppercase mt-2">
-              EXPLORE THE ENGINEERING DIVISIONS
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-secondary-accent uppercase mt-2">
+              Explore the Engineering Divisions
             </h2>
           </div>
 
@@ -304,7 +304,7 @@ export default function Home() {
               <span className="font-mono text-xs text-primary-accent tracking-widest uppercase">
                 <DecryptText text="// FEATURED SYSTEMS INTEGRATION" />
               </span>
-              <h2 className="font-display text-3xl font-extrabold text-secondary-accent uppercase mt-2">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-secondary-accent uppercase mt-2">
                 {featuredVehicle.name}
               </h2>
               <p className="text-secondary-accent/80 font-sans text-sm leading-relaxed mt-3">
@@ -399,8 +399,8 @@ export default function Home() {
             STATUS: RECRUITMENT ACTIVE FOR BATCH 2026
           </div>
           
-          <h2 className="font-display text-3xl md:text-4xl font-extrabold text-secondary-accent uppercase leading-none max-w-2xl">
-            ARE YOU READY TO DESIGN THE FUTURE OF FLIGHT?
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-secondary-accent uppercase leading-tight max-w-2xl">
+            Are You Ready to Design the Future of Flight?
           </h2>
           
           <p className="text-secondary-accent/80 font-sans text-sm md:text-base max-w-xl leading-relaxed">

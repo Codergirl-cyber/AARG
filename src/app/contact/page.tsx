@@ -74,8 +74,8 @@ export default function Contact() {
             <span className="w-1.5 h-1.5 bg-primary-accent" />
             {"/// COMMUNICATIONS_DECK // CONTACT"}
           </span>
-          <h1 className="font-display text-4xl md:text-5xl font-extrabold text-secondary-accent uppercase tracking-tight mt-2">
-            CONNECT WITH AARG
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
+            Connect With AARG
           </h1>
           <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
             {"COMMS_CHANNEL // ESTABLISH DIRECT LINK"}

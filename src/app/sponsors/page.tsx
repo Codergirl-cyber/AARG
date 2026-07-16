@@ -18,8 +18,8 @@ export default function Sponsors() {
             <span className="w-1.5 h-1.5 bg-primary-accent" />
             <DecryptText text="/// CORPORATE_SUPPORT // SPONSORSHIP" />
           </span>
-          <h1 className="font-display text-4xl md:text-5xl font-extrabold text-secondary-accent uppercase tracking-tight mt-2">
-            OUR SPONSORS &amp; AFFILIATES
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
+            Our Sponsors &amp; Affiliates
           </h1>
           <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
             {"PARTNERSHIP STATUS // ENABLERS OF FLIGHT RESEARCH"}
@@ -35,13 +35,13 @@ export default function Sponsors() {
               <div className="flex flex-col gap-5">
                 {/* Eyebrow with large number */}
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-4xl font-extrabold text-primary-accent leading-none opacity-80">01</span>
+                  <span className="font-mono text-2xl font-semibold text-primary-accent leading-none opacity-70">01</span>
                   <div className="hud-divider-v" style={{ height: "2rem" }} />
                   <span className="font-mono text-[10px] text-primary-accent/70 uppercase tracking-widest">Partnership Overview</span>
                 </div>
                 <div className="hud-divider-h" />
-                <h2 className="font-display text-2xl md:text-3xl font-extrabold text-secondary-accent uppercase tracking-tight">
-                  WHY SPONSOR AARG?
+                <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
+                  Why Sponsor AARG?
                 </h2>
                 <div className="font-sans text-sm md:text-base text-secondary-accent/85 space-y-4 leading-relaxed max-w-xl">
                   <p>{sponsorsData.valueProposition}</p>

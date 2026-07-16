@@ -21,8 +21,8 @@ export default function About() {
             <span className="w-1.5 h-1.5 bg-primary-accent" />
             <DecryptText text="/// OPERATIONAL SYSTEM // ABOUT_AARG" />
           </span>
-          <h1 className="font-display text-4xl md:text-5xl font-extrabold text-secondary-accent uppercase tracking-tight mt-2">
-            WHO WE ARE &amp; WHY WE FLY
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
+            Who We Are &amp; Why We Fly
           </h1>
           <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
             {"REGISTRY // STATUS: ACTIVE // HOST_COLLEGE:"} {siteConfig.college}
@@ -40,13 +40,13 @@ export default function About() {
               <div className="flex flex-col gap-5">
                 {/* Eyebrow */}
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-4xl md:text-5xl font-extrabold text-primary-accent leading-none opacity-80">01</span>
+                  <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">01</span>
                   <div className="hud-divider-v" style={{ height: "2.5rem" }} />
                   <span className="font-mono text-[10px] text-primary-accent/70 uppercase tracking-widest">Foundational Overview</span>
                 </div>
                 {/* Rule */}
                 <div className="hud-divider-h" />
-                <h2 className="font-display text-2xl md:text-3xl font-extrabold text-secondary-accent uppercase tracking-tight">
+                <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
                   THE TEAM
                 </h2>
                 <div className="font-sans text-sm md:text-base text-secondary-accent/85 space-y-4 leading-relaxed max-w-xl">
@@ -70,12 +70,12 @@ export default function About() {
               <div className="flex flex-col gap-5">
                 {/* Eyebrow */}
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-4xl md:text-5xl font-extrabold text-primary-accent leading-none opacity-80">02</span>
+                  <span className="font-mono text-2xl md:text-3xl font-semibold text-primary-accent leading-none opacity-70">02</span>
                   <div className="hud-divider-v" style={{ height: "2.5rem" }} />
                   <span className="font-mono text-[10px] text-primary-accent/70 uppercase tracking-widest">Mission &amp; Vision</span>
                 </div>
                 <div className="hud-divider-h" />
-                <h2 className="font-display text-2xl md:text-3xl font-extrabold text-secondary-accent uppercase tracking-tight">
+                <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight">
                   OUR GOALS
                 </h2>
                 {/* Two-column icon + text items — no card borders */}

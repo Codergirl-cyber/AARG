@@ -66,8 +66,8 @@ export default function Domains() {
               <span className="w-1.5 h-1.5 bg-primary-accent" />
               <DecryptText text="/// UAV_SYSTEMS_DIVISIONS // STRUCTURES" />
             </span>
-            <h1 className="font-display text-4xl md:text-5xl font-extrabold text-secondary-accent uppercase tracking-tight mt-2">
-              TECHNICAL DOMAINS
+            <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
+              Technical Domains
             </h1>
             <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
               {"ENGINEERING MATRIX // 5 ACTIVE SYSTEM CATEGORIES // SELECT TO ACCESS"}
@@ -151,7 +151,7 @@ export default function Domains() {
                         <span className="font-mono text-[9px] text-primary-accent/70 uppercase tracking-widest block">
                           {selectedDomain.focus}
                         </span>
-                        <h2 className="font-display text-2xl md:text-3xl font-extrabold text-secondary-accent uppercase tracking-tight leading-none mt-0.5">
+                        <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase tracking-tight leading-none mt-0.5">
                           {selectedDomain.name}
                         </h2>
                       </div>
@@ -222,7 +222,7 @@ export default function Domains() {
               >
                 <div>
                   <span className="font-mono text-[9px] text-primary-accent/70 uppercase tracking-widest">{selectedDomain.focus}</span>
-                  <h2 className="font-display text-2xl font-extrabold text-secondary-accent uppercase mt-1">{selectedDomain.name}</h2>
+                  <h2 className="font-display text-xl font-bold text-secondary-accent uppercase mt-1">{selectedDomain.name}</h2>
                 </div>
                 <p className="font-sans text-sm text-secondary-accent/80 leading-relaxed">{selectedDomain.description}</p>
                 <ul className="space-y-2">
@@ -254,8 +254,8 @@ export default function Domains() {
               <span className="w-1.5 h-1.5 bg-primary-accent" />
               <DecryptText text="/// PHYSICAL_DEPLOYMENT_SPEC // VEHICLE_PORTFOLIO" />
             </span>
-            <h2 className="font-display text-3xl font-extrabold text-secondary-accent uppercase tracking-tight mt-2">
-              UAV VEHICLE SPECIFICATION SHEETS
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
+              UAV Vehicle Specification Sheets
             </h2>
             <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
               {"FLEET STATUS: 2 COMPETITION HULLS // HIGHLIGHTED ON DOMAIN LINK"}
@@ -308,7 +308,7 @@ export default function Domains() {
                         <span className="font-mono text-[10px] text-primary-accent font-bold uppercase tracking-widest">
                           {"///"} {vehicle.category.toUpperCase()}
                         </span>
-                        <h3 className="font-display text-2xl md:text-3xl font-extrabold text-secondary-accent uppercase">
+                        <h3 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase">
                           {vehicle.name}
                         </h3>
                         <div className="font-mono text-[9px] text-secondary-accent/40 uppercase mt-0.5">

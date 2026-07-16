@@ -152,8 +152,8 @@ export default function Achievements() {
             <span className="w-1.5 h-1.5 bg-primary-accent" />
             <DecryptText text="/// COMP_HISTORY_LOG // ACHIEVEMENTS" />
           </span>
-          <h1 className="font-display text-4xl md:text-5xl font-extrabold text-secondary-accent uppercase tracking-tight mt-2">
-            VICTORIES &amp; ACCREDITATIONS
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
+            Victories &amp; Accreditations
           </h1>
           <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
             RECORD_DATABASE // PODIUMS SECURED
@@ -174,7 +174,7 @@ export default function Achievements() {
                 <span className="font-mono text-xs text-primary-accent tracking-widest uppercase font-semibold">
                   <DecryptText text="/// FEATURED FLIGHT SPOTLIGHT" />
                 </span>
-                <h2 className="font-display text-2xl md:text-3xl font-extrabold text-secondary-accent uppercase leading-tight">
+                <h2 className="font-display text-xl md:text-2xl font-bold text-secondary-accent uppercase leading-tight">
                   {achievementsData.spotlight.title}
                 </h2>
                 <h3 className="font-mono text-xs text-secondary-accent/55 uppercase">

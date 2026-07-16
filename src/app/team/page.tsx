@@ -39,8 +39,8 @@ export default function Team() {
             <span className="w-1.5 h-1.5 bg-primary-accent" />
             <DecryptText text="/// UAV_CREW_MANIFEST // FLIGHT_OFFICERS" />
           </span>
-          <h1 className="font-display text-4xl md:text-5xl font-extrabold text-secondary-accent uppercase tracking-tight mt-2">
-            THE AARG SQUADRON
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
+            The AARG Squadron
           </h1>
           <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
             CREW_TOTAL // {teamData.leadership.length + teamData.leads.length + 15} MEMBERS ACTIVE
