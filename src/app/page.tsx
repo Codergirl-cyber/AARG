@@ -12,6 +12,8 @@ import SponsorMarquee from "@/components/SponsorMarquee";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import DecryptText from "@/components/DecryptText";
 import HeroBackground from "@/components/HeroBackground";
+import DomainRadar from "@/components/DomainRadar";
+
 
 export default function Home() {
   const featuredVehicle = vehicles[0];
@@ -325,6 +327,27 @@ export default function Home() {
                 </p>
               </div>
             </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* SECTION 3.5: TECHNICAL DOMAINS / INTERACTIVE SYSTEMS MAP */}
+      <section className="py-16 md:py-24 bg-bg-base relative z-10 px-4 md:px-8 border-b border-secondary-accent/10">
+        {/* Faint HUD crosshair grid overlay */}
+        <div className="absolute inset-0 hud-grid pointer-events-none opacity-20" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="mb-12">
+            <span className="font-mono text-xs text-primary-accent tracking-widest uppercase">
+              <DecryptText text="// TECHNICAL DOMAINS // INTERACTIVE SYSTEMS MAP" />
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold text-secondary-accent uppercase mt-2">
+              EXPLORE THE ENGINEERING DIVISIONS
+            </h2>
+          </div>
+
+          <ScrollReveal>
+            <DomainRadar />
           </ScrollReveal>
         </div>
       </section>
