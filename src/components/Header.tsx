@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/content/site";
 import { motion, AnimatePresence } from "framer-motion";
 import Magnetic from "@/components/Magnetic";
+import TelemetryStrip from "@/components/TelemetryStrip";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,10 +54,10 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "bg-bg-base/80 backdrop-blur-md border-secondary-accent/15 py-3 shadow-md"
-            : "bg-transparent border-transparent py-5"
+            ? "bg-bg-base/90 backdrop-blur-md py-2 shadow-md border-b border-white/5"
+            : "bg-transparent py-4 border-b border-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
@@ -66,7 +67,7 @@ export default function Header() {
             className="flex items-center gap-3 group focus-hud"
           >
             {/* Logo Container */}
-            <div className="relative w-11 h-11 flex-shrink-0 bg-black/40 border border-white/10 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300 group-hover:border-primary-accent/40 group-hover:shadow-[0_0_12px_rgba(180,77,11,0.2)]">
+            <div className="relative w-10 h-10 flex-shrink-0 bg-black/40 border border-white/10 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300 group-hover:border-primary-accent/50">
               {!logoError ? (
                 <img
                   src="/logo.png"
@@ -82,7 +83,6 @@ export default function Header() {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
-                  <circle cx="50" cy="50" r="41" stroke="currentColor" strokeWidth="1" opacity="0.4" />
                   <path
                     d="M50 20C50 20 44 38 44 55C44 62 48 66 50 66C52 66 56 62 56 55C56 38 50 20 50 20Z"
                     fill="currentColor"
@@ -102,45 +102,39 @@ export default function Header() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
-                  <path
-                    d="M47 68C47 68 50 78 50 78C50 78 53 68 53 68C53 68 51.5 70 50 70C48.5 70 47 68 47 68Z"
-                    fill="currentColor"
-                  />
-                  <circle cx="32" cy="35" r="1.5" fill="currentColor" opacity="0.7" />
-                  <circle cx="68" cy="35" r="1.5" fill="currentColor" opacity="0.7" />
                 </svg>
               )}
             </div>
 
             {/* Text Container */}
             <div className="flex flex-col justify-center">
-              <span className="font-sans font-extrabold text-lg md:text-xl leading-none text-white tracking-wider transition-colors duration-250 group-hover:text-primary-accent">
+              <span className="font-sans font-extrabold text-base md:text-lg leading-none text-white tracking-wider transition-colors duration-250 group-hover:text-primary-accent">
                 AARG
               </span>
-              <span className="font-mono text-[8px] md:text-[9px] tracking-[0.15em] text-secondary-accent/60 leading-none mt-1 uppercase font-medium">
+              <span className="font-mono text-[7px] md:text-[8px] tracking-[0.15em] text-secondary-accent/60 leading-none mt-1 uppercase font-medium">
                 Advanced Aerial Robotics Group
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Link Strip */}
-          <nav className="hidden lg:flex items-center gap-6 font-mono text-[11px] font-medium">
+          {/* Desktop Navigation Link Strip - Increased gap to 8 */}
+          <nav className="hidden lg:flex items-center gap-8 font-mono text-[10px] tracking-wider font-semibold">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`hover:text-primary-accent transition-colors duration-200 focus-hud px-2 py-1 relative ${
-                    isActive ? "text-primary-accent font-semibold" : "text-secondary-accent/80"
+                  className={`hover:text-primary-accent transition-colors duration-200 focus-hud px-1 py-1 relative ${
+                    isActive ? "text-primary-accent font-bold" : "text-secondary-accent/80"
                   }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.span
                       layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-2 right-2 h-[1.5px] bg-primary-accent"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-primary-accent"
+                      transition={{ type: "spring", stiffness: 350, damping: 25 }}
                     />
                   )}
                 </Link>
@@ -148,15 +142,14 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Primary Call-to-Action */}
+          {/* Primary Call-to-Action - Cleaned & Toned Down */}
           <div className="hidden lg:block">
             <Magnetic>
               <Link
                 href="/join"
-                className="group relative overflow-hidden font-mono text-[10px] font-bold border border-primary-accent bg-primary-accent/10 px-4 py-2 hover:bg-primary-accent hover:text-white transition-all duration-250 focus-hud rounded-none flex items-center gap-1.5"
+                className="group relative overflow-hidden font-mono text-[10px] font-bold border border-primary-accent/40 bg-primary-accent/5 px-4 py-2 hover:bg-primary-accent/15 hover:border-primary-accent hover:text-white transition-all duration-300 focus-hud rounded-md flex items-center gap-1.5 hover:scale-[1.02]"
               >
                 <span className="relative z-10">{"JOIN_US // REC_OPEN"}</span>
-                <span className="animate-sweep" />
               </Link>
             </Magnetic>
           </div>
@@ -165,10 +158,15 @@ export default function Header() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="lg:hidden p-2 border border-secondary-accent/15 text-secondary-accent hover:border-primary-accent hover:text-primary-accent transition-colors focus-hud rounded-none cursor-pointer"
+            className="lg:hidden p-2 border border-white/10 text-secondary-accent hover:border-primary-accent hover:text-primary-accent transition-colors focus-hud rounded-md"
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
+        </div>
+
+        {/* Live flight computer telemetry bar */}
+        <div className="mt-2">
+          <TelemetryStrip />
         </div>
       </header>
 
@@ -189,17 +187,17 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[270px] z-42 bg-surface border-l border-secondary-accent/15 p-6 flex flex-col justify-between lg:hidden"
+              className="fixed top-0 right-0 bottom-0 w-[270px] z-42 bg-surface-mid border-l border-white/10 p-6 flex flex-col justify-between lg:hidden"
             >
               <div className="flex flex-col gap-6">
-                <div className="flex items-center justify-between pb-4 border-b border-secondary-accent/10">
-                  <span className="font-mono text-[10px] tracking-widest text-primary-accent font-semibold">
+                <div className="flex items-center justify-between pb-4 border-b border-white/5">
+                  <span className="font-mono text-[9px] tracking-widest text-primary-accent font-semibold">
                     {"/// UAV_SYS_NAV"}
                   </span>
                   <button
                     onClick={() => setIsOpen(false)}
                     aria-label="Close menu"
-                    className="p-1 border border-secondary-accent/10 text-secondary-accent hover:text-primary-accent hover:border-primary-accent transition-colors focus-hud rounded-none cursor-pointer"
+                    className="p-1 border border-white/5 text-secondary-accent hover:text-primary-accent hover:border-primary-accent transition-colors focus-hud rounded-md"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -226,11 +224,11 @@ export default function Header() {
                 </nav>
               </div>
 
-              <div className="flex flex-col gap-3 border-t border-secondary-accent/10 pt-6">
+              <div className="flex flex-col gap-3 border-t border-white/5 pt-6">
                 <Link
                   href="/join"
                   onClick={() => setIsOpen(false)}
-                  className="font-mono text-xs font-bold text-center border border-primary-accent bg-primary-accent/10 py-3 hover:bg-primary-accent hover:text-white transition-all duration-250 focus-hud rounded-none block"
+                  className="font-mono text-xs font-bold text-center border border-primary-accent bg-primary-accent/5 py-3 hover:bg-primary-accent hover:text-white transition-all duration-300 focus-hud rounded-md block"
                 >
                   {"JOIN_US // REC_OPEN"}
                 </Link>

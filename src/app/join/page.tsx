@@ -104,11 +104,9 @@ export default function Join() {
           {/* CTA Panel — HUD panel kept (focused action element) */}
           <div className="lg:col-span-5">
             <ScrollReveal delay={0.15}>
-              <div className="border border-primary-accent/35 bg-surface p-6 md:p-8 relative flex flex-col gap-6 text-center items-center">
-                <div className="hud-corner hud-corner-tl !border-primary-accent" />
-                <div className="hud-corner hud-corner-tr !border-primary-accent" />
-                <div className="hud-corner hud-corner-bl !border-primary-accent" />
-                <div className="hud-corner hud-corner-br !border-primary-accent" />
+              <div className="border border-primary-accent/30 bg-surface-low p-6 md:p-8 relative flex flex-col gap-6 text-center items-center">
+                {/* Top accent bar */}
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-accent/40 to-transparent pointer-events-none" />
 
                 <div className="font-mono text-xs text-primary-accent font-bold uppercase tracking-widest flex items-center gap-2">
                   <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />

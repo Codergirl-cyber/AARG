@@ -6,14 +6,14 @@ import { motion, useReducedMotion } from "framer-motion";
 interface HudCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   corners?: boolean;
-  hoverGlow?: boolean;
+  hoverGlow?: boolean; // Keep for interface compatibility, mapped to spotlight
   eyebrow?: string;
   title?: string;
 }
 
 export default function HudCard({
   children,
-  corners = true,
+  corners = false, // Changed default to false
   hoverGlow = true,
   eyebrow,
   title,
@@ -22,12 +22,26 @@ export default function HudCard({
 }: HudCardProps) {
   const shouldReduceMotion = useReducedMotion();
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (shouldReduceMotion) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+  };
+
+  const cardVariants = {
+    initial: { y: 0 },
+    hover: { 
+      y: shouldReduceMotion ? 0 : -3,
+      borderColor: "rgba(255, 255, 255, 0.12)",
+      transition: { type: "spring", stiffness: 300, damping: 22 }
+    }
+  };
+
   if (shouldReduceMotion) {
     return (
       <div
-        className={`relative bg-surface border border-secondary-accent/15 rounded-none p-5 md:p-6 transition-all duration-300 ${
-          hoverGlow ? "hover:border-primary-accent/40 glow-primary-hover" : ""
-        } ${className}`}
+        className={`relative bg-surface-mid border border-white/5 rounded-md p-6 md:p-8 transition-all duration-300 ${className}`}
         {...props}
       >
         {corners && (
@@ -39,107 +53,71 @@ export default function HudCard({
           </>
         )}
         {(eyebrow || title) && (
-          <div className="mb-4 border-b border-secondary-accent/10 pb-3 font-mono">
+          <div className="mb-4 border-b border-white/5 pb-3 font-mono relative z-10">
             {eyebrow && (
-              <div className="text-[10px] uppercase tracking-widest text-primary-accent font-semibold">
+              <div className="text-[9px] uppercase tracking-widest text-primary-accent font-bold">
                 {"///"} {eyebrow}
               </div>
             )}
             {title && (
-              <h3 className="font-display text-lg font-bold tracking-tight text-secondary-accent uppercase mt-1">
+              <h3 className="font-display text-base md:text-lg font-bold tracking-tight text-white uppercase mt-1">
                 {title}
               </h3>
             )}
           </div>
         )}
-        {children}
+        <div className="relative z-10">{children}</div>
       </div>
     );
   }
 
   return (
     <motion.div
+      variants={cardVariants}
       initial="initial"
       whileHover="hover"
-      className={`relative bg-surface border border-secondary-accent/15 rounded-none p-5 md:p-6 transition-colors duration-300 ${
-        hoverGlow ? "glow-primary-hover hover:border-primary-accent/30" : ""
-      } ${className}`}
+      onMouseMove={handleMouseMove}
+      className={`relative bg-surface-mid border border-white/5 rounded-md p-6 md:p-8 overflow-hidden group card-spotlight transition-colors duration-300 ${className}`}
       {...(props as any)}
     >
-      {/* 1. Draw SVG Border on hover */}
+      {/* Background Spotlight Radial Gradient Overlay */}
       {hoverGlow && (
-        <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" fill="none">
-          <motion.rect
-            x="0"
-            y="0"
-            width="100%"
-            height="100%"
-            stroke="#b44d0b"
-            strokeWidth="1.5"
-            initial={{ pathLength: 0, opacity: 0 }}
-            variants={{
-              hover: { pathLength: 1, opacity: 0.8 }
-            }}
-            transition={{ duration: 0.45, ease: "easeInOut" }}
-          />
-        </svg>
+        <div
+          className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+          style={{
+            background: `radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.045), transparent 80%)`,
+          }}
+        />
       )}
 
-      {/* 2. Target Reticle Corners locking-on animation */}
+      {/* Target Reticle Corners - reserved for specialized elements */}
       {corners && (
         <>
-          <motion.div
-            variants={{
-              initial: { x: -3, y: -3, borderColor: "#b44d0b" },
-              hover: { x: 0, y: 0, borderColor: "#b44d0b", scale: 1.1 }
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="hud-corner hud-corner-tl"
-          />
-          <motion.div
-            variants={{
-              initial: { x: 3, y: -3, borderColor: "#b44d0b" },
-              hover: { x: 0, y: 0, borderColor: "#b44d0b", scale: 1.1 }
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="hud-corner hud-corner-tr"
-          />
-          <motion.div
-            variants={{
-              initial: { x: -3, y: 3, borderColor: "#b44d0b" },
-              hover: { x: 0, y: 0, borderColor: "#b44d0b", scale: 1.1 }
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="hud-corner hud-corner-bl"
-          />
-          <motion.div
-            variants={{
-              initial: { x: 3, y: 3, borderColor: "#b44d0b" },
-              hover: { x: 0, y: 0, borderColor: "#b44d0b", scale: 1.1 }
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="hud-corner hud-corner-br"
-          />
+          <div className="hud-corner hud-corner-tl !border-white/20" />
+          <div className="hud-corner hud-corner-tr !border-white/20" />
+          <div className="hud-corner hud-corner-bl !border-white/20" />
+          <div className="hud-corner hud-corner-br !border-white/20" />
         </>
       )}
 
-      {/* Telemetry Header Style */}
+      {/* Card Header Content */}
       {(eyebrow || title) && (
-        <div className="mb-4 border-b border-secondary-accent/10 pb-3 font-mono">
+        <div className="mb-4 border-b border-white/5 pb-3 font-mono relative z-10">
           {eyebrow && (
-            <div className="text-[10px] uppercase tracking-widest text-primary-accent font-semibold">
+            <div className="text-[9px] uppercase tracking-widest text-primary-accent font-bold">
               {"///"} {eyebrow}
             </div>
           )}
           {title && (
-            <h3 className="font-display text-lg font-bold tracking-tight text-secondary-accent uppercase mt-1">
+            <h3 className="font-display text-base md:text-lg font-bold tracking-tight text-white uppercase mt-1">
               {title}
             </h3>
           )}
         </div>
       )}
 
-      {children}
+      {/* Main card body */}
+      <div className="relative z-10">{children}</div>
     </motion.div>
   );
 }

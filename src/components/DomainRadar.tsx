@@ -59,27 +59,7 @@ export default function DomainRadar() {
       {/* 1. Radar display container (left/top, ~40% width on desktop) */}
       <div className="col-span-1 lg:col-span-5 flex justify-center items-center relative py-4 lg:py-8">
         <div className="relative w-[280px] h-[280px] md:w-[340px] md:h-[340px] flex items-center justify-center select-none">
-          {/* Rotating sweep wedge (HTML background with conic gradient, masked to outer circle) */}
-          <div className="absolute w-[76.4%] h-[76.4%] rounded-full overflow-hidden pointer-events-none opacity-20 z-0">
-            <motion.div
-              className="w-full h-full"
-              style={{
-                background:
-                  "conic-gradient(from 0deg, var(--color-primary-accent) 0%, transparent 40%, transparent 100%)",
-                borderRadius: "50%",
-              }}
-              animate={shouldReduceMotion ? {} : { rotate: 360 }}
-              transition={
-                shouldReduceMotion
-                  ? {}
-                  : {
-                      repeat: Infinity,
-                      duration: 7,
-                      ease: "linear",
-                    }
-              }
-            />
-          </div>
+          {/* Static precision ring — no sweep animation */}
 
           {/* SVG Radar Graphics */}
           <svg
@@ -157,13 +137,22 @@ export default function DomainRadar() {
               );
             })}
 
-            {/* Dead center glowing dot */}
+            {/* Dead center crosshair dot — no glow */}
             <circle
               cx={CENTER}
               cy={CENTER}
-              r={4}
+              r={3}
               fill="var(--color-primary-accent)"
-              className="glow-primary animate-pulse"
+              opacity="0.85"
+            />
+            <circle
+              cx={CENTER}
+              cy={CENTER}
+              r={8}
+              fill="none"
+              stroke="var(--color-primary-accent)"
+              strokeOpacity="0.25"
+              strokeWidth="0.8"
             />
           </svg>
 
@@ -205,19 +194,19 @@ export default function DomainRadar() {
                   height: "48px",
                 }}
               >
-                {/* Ping halo for the active node */}
+                {/* Active ring — precision CAD indicator, no ping */}
                 {isActive && (
                   <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span className="w-6 h-6 rounded-full bg-primary-accent opacity-70 animate-ping" />
+                    <span className="w-5 h-5 rounded-full border border-primary-accent/50" />
                   </span>
                 )}
 
-                {/* Node dot graphic */}
+                {/* Node dot graphic — no neon shadow */}
                 <div
-                  className={`w-3.5 h-3.5 rounded-full border transition-all duration-300 flex items-center justify-center ${
+                  className={`w-2.5 h-2.5 rounded-full border transition-all duration-300 flex items-center justify-center ${
                     isActive
-                      ? "bg-primary-accent border-primary-accent shadow-[0_0_10px_var(--color-primary-accent)]"
-                      : "bg-bg-base border-secondary-accent/40 group-hover:border-primary-accent/80"
+                      ? "bg-primary-accent border-primary-accent"
+                      : "bg-bg-base border-secondary-accent/35 group-hover:border-primary-accent/60"
                   }`}
                 />
 
@@ -239,12 +228,9 @@ export default function DomainRadar() {
 
       {/* 2. Detail readout panel (right/bottom, ~60% width on desktop) */}
       <div className="col-span-1 lg:col-span-7 flex flex-col justify-stretch">
-        <div className="relative border border-secondary-accent/15 bg-bg-base p-6 md:p-8 rounded-none min-h-[460px] sm:min-h-[400px] md:min-h-[380px] lg:min-h-[420px] flex flex-col justify-between">
-          {/* HUD Target corners */}
-          <div className="hud-corner hud-corner-tl" />
-          <div className="hud-corner hud-corner-tr" />
-          <div className="hud-corner hud-corner-bl" />
-          <div className="hud-corner hud-corner-br" />
+        <div className="relative border border-secondary-accent/12 bg-surface-low p-6 md:p-8 rounded-none min-h-[460px] sm:min-h-[400px] md:min-h-[380px] lg:min-h-[420px] flex flex-col justify-between">
+          {/* Precision top-edge accent bar instead of corner decals */}
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-accent/30 to-transparent pointer-events-none" />
 
           {/* AnimatePresence for clean transition when domains change */}
           <AnimatePresence mode="wait">

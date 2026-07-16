@@ -19,16 +19,6 @@ export default function RouteTransition({ children }: RouteTransitionProps) {
   // Track page scroll progress
   const { scrollYProgress } = useScroll();
   
-  // Transform scroll progress to clean display values
-  const [scrollPct, setScrollPct] = useState(0);
-  
-  useEffect(() => {
-    return scrollYProgress.onChange((v) => {
-      setScrollPct(Math.round(v * 100));
-    });
-  }, [scrollYProgress]);
-
-  // Trigger telemetry route-load progress bar on path changes
   useEffect(() => {
     if (shouldReduceMotion) return;
     
@@ -52,40 +42,28 @@ export default function RouteTransition({ children }: RouteTransitionProps) {
     };
   }, [pathname, shouldReduceMotion]);
 
-  // Telemetry vertical coordinate labels
-  const scrollCoordinates = useTransform(scrollYProgress, [0, 1], [0, 9999]);
-  const [formattedCoords, setFormattedCoords] = useState("0000");
-
-  useEffect(() => {
-    return scrollCoordinates.onChange((v) => {
-      setFormattedCoords(Math.floor(v).toString().padStart(4, "0"));
-    });
-  }, [scrollCoordinates]);
-
   if (shouldReduceMotion) {
     return <div className="w-full">{children}</div>;
   }
 
   return (
     <>
-      {/* 1. Telemetry Loading Progress Bar */}
+      {/* 1. Telemetry Loading Progress Bar - Non Glowing */}
       {loading && (
-        <div className="fixed top-0 left-0 right-0 h-[2px] bg-surface z-50 overflow-hidden pointer-events-none">
+        <div className="fixed top-0 left-0 right-0 h-[2px] bg-surface-low z-50 overflow-hidden pointer-events-none">
           <motion.div
             initial={{ width: "0%" }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="h-full bg-primary-accent shadow-[0_0_8px_#b44d0b]"
+            className="h-full bg-primary-accent"
           />
-          <span className="absolute right-4 top-1 font-mono text-[8px] text-primary-accent/80 animate-pulse">
+          <span className="absolute right-4 top-1 font-mono text-[8px] text-secondary-accent/40">
             LOADING_DATA // SYS_SYS_ACK
           </span>
         </div>
       )}
 
-
-
-      {/* 3. Page Route Transition Animates */}
+      {/* 3. Page Route Transition Animates - Premium Slide and Fade Spring */}
       <AnimatePresence mode="wait">
         <motion.div
           key={pathname}
@@ -93,26 +71,20 @@ export default function RouteTransition({ children }: RouteTransitionProps) {
           animate="animate"
           exit="exit"
           variants={{
-            initial: { opacity: 0, filter: "brightness(0.2) contrast(1.5)" },
+            initial: { opacity: 0, y: 12 },
             animate: { 
               opacity: 1, 
-              filter: "brightness(1) contrast(1)",
-              transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } 
+              y: 0,
+              transition: { type: "spring", stiffness: 200, damping: 25 } 
             },
             exit: { 
               opacity: 0, 
-              filter: "brightness(0.2) contrast(1.5)",
-              transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } 
+              y: -12,
+              transition: { duration: 0.2, ease: "easeInOut" } 
             }
           }}
           className="relative w-full flex-grow flex flex-col"
         >
-          <motion.div
-            initial={{ height: "100%" }}
-            animate={{ height: "0%" }}
-            transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-x-0 top-0 bg-primary-accent/10 z-45 pointer-events-none"
-          />
           {children}
         </motion.div>
       </AnimatePresence>

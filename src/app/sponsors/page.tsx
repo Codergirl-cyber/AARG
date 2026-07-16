@@ -9,9 +9,6 @@ import { Download, Landmark, ArrowUpRight } from "lucide-react";
 export default function Sponsors() {
   return (
     <div className="relative w-full flex flex-col min-h-screen bg-bg-base py-12 md:py-20 px-4 md:px-8">
-      {/* HUD Background Overlays */}
-      <div className="absolute inset-0 hud-grid pointer-events-none opacity-30" />
-      <div className="absolute inset-0 hud-grid-fine pointer-events-none opacity-20" />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
         
@@ -59,11 +56,9 @@ export default function Sponsors() {
           {/* Download deck CTA — HUD panel kept (it&apos;s a focused action element) */}
           <div className="lg:col-span-5">
             <ScrollReveal delay={0.15}>
-              <div className="border border-primary-accent/35 bg-surface/80 p-6 relative font-mono text-xs text-secondary-accent/80 flex flex-col gap-5">
-                <div className="hud-corner hud-corner-tl !border-primary-accent" />
-                <div className="hud-corner hud-corner-tr !border-primary-accent" />
-                <div className="hud-corner hud-corner-bl !border-primary-accent" />
-                <div className="hud-corner hud-corner-br !border-primary-accent" />
+              <div className="border border-primary-accent/30 bg-surface-low p-6 relative font-mono text-xs text-secondary-accent/80 flex flex-col gap-5">
+                {/* Top accent bar */}
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-accent/40 to-transparent pointer-events-none" />
 
                 <div className="text-primary-accent font-bold border-b border-secondary-accent/15 pb-2 uppercase text-[10px] flex items-center gap-1.5">
                   <Landmark className="w-4 h-4" /> {"// DOWNLOAD_DECK"}
@@ -106,12 +101,8 @@ export default function Sponsors() {
                     href={sponsor.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center justify-center h-40 w-full border-2 border-primary-accent bg-surface hover:bg-primary-accent/8 transition-all duration-300 focus-hud text-center font-mono relative group shadow-[0_0_20px_rgba(180,77,11,0.12)] hover:shadow-[0_0_35px_rgba(180,77,11,0.25)]"
+                    className="flex flex-col items-center justify-center h-40 w-full border-2 border-primary-accent bg-surface-low hover:bg-primary-accent/5 transition-all duration-300 focus-hud text-center font-mono relative group"
                   >
-                    <div className="hud-corner hud-corner-tl !border-primary-accent" />
-                    <div className="hud-corner hud-corner-tr !border-primary-accent" />
-                    <div className="hud-corner hud-corner-bl !border-primary-accent" />
-                    <div className="hud-corner hud-corner-br !border-primary-accent" />
                     <span className="text-primary-accent text-[9px] uppercase tracking-widest mb-2 font-semibold">
                       {"// PLATINUM TITLE"}
                     </span>
@@ -137,12 +128,8 @@ export default function Sponsors() {
                     href={sponsor.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center justify-center h-28 border border-secondary-accent/30 bg-surface hover:border-primary-accent hover:bg-primary-accent/5 transition-all duration-300 focus-hud text-center font-mono relative group"
+                    className="flex flex-col items-center justify-center h-28 border border-secondary-accent/25 bg-surface-low hover:border-primary-accent/50 hover:bg-primary-accent/4 transition-all duration-300 focus-hud text-center font-mono relative group"
                   >
-                    <div className="hud-corner hud-corner-tl" />
-                    <div className="hud-corner hud-corner-tr" />
-                    <div className="hud-corner hud-corner-bl" />
-                    <div className="hud-corner hud-corner-br" />
                     <span className="text-secondary-accent/35 text-[8px] uppercase tracking-widest mb-1.5 font-semibold">
                       {"// PLATINUM SLOT"}
                     </span>
@@ -168,12 +155,8 @@ export default function Sponsors() {
                     href={sponsor.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center justify-center h-20 border border-secondary-accent/15 bg-surface/50 hover:border-primary-accent/50 transition-colors focus-hud text-center font-mono relative group"
+                    className="flex flex-col items-center justify-center h-20 border border-secondary-accent/12 bg-surface-low hover:border-primary-accent/40 transition-colors focus-hud text-center font-mono relative group"
                   >
-                    <div className="hud-corner hud-corner-tl" />
-                    <div className="hud-corner hud-corner-tr" />
-                    <div className="hud-corner hud-corner-bl" />
-                    <div className="hud-corner hud-corner-br" />
                     <span className="text-secondary-accent/35 text-[8px] uppercase tracking-widest mb-1">
                       {"// GOLD SLOT"}
                     </span>

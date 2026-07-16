@@ -6,10 +6,10 @@ import { motion, useReducedMotion } from "framer-motion";
 interface MagneticProps {
   children: React.ReactElement;
   range?: number; // Distance threshold to attract cursor
-  strength?: number; // How strongly it pulls (e.g. 0.3 = 30%)
+  strength?: number; // How strongly it pulls (e.g. 0.18 = 18%)
 }
 
-export default function Magnetic({ children, range = 50, strength = 0.35 }: MagneticProps) {
+export default function Magnetic({ children, range = 40, strength = 0.18 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -63,7 +63,7 @@ export default function Magnetic({ children, range = 50, strength = 0.35 }: Magn
       ref={ref}
       onMouseLeave={handleMouseLeave}
       animate={{ x, y }}
-      transition={{ type: "spring", stiffness: 120, damping: 15, mass: 0.1 }}
+      transition={{ type: "spring", stiffness: 120, damping: 20, mass: 0.1 }}
       className="inline-block"
     >
       {children}

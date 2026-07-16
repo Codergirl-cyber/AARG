@@ -3,7 +3,10 @@
 @theme {
   --color-bg-base: #0a0b0d;
   --color-surface: #111318;
-  --color-primary-accent: #b44d0b;
+  --color-surface-low: #111318;
+  --color-surface-mid: #161a21;
+  --color-surface-high: #222731;
+  --color-primary-accent: #c85a17; /* Refined, slightly softer burnt-orange */
   --color-secondary-accent: #d1cabf;
 
   --font-sans: var(--font-ibm-plex-sans), sans-serif;
@@ -16,25 +19,27 @@
   --foreground: #ededed;
   
   --color-bg-base: #0a0b0d;
-  --color-surface: #111318;
-  --color-primary-accent: #b44d0b;
+  --color-surface-low: #111318;
+  --color-surface-mid: #161a21;
+  --color-surface-high: #222731;
+  --color-primary-accent: #c85a17;
   --color-secondary-accent: #d1cabf;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: #0a0b0d;
 }
 ::-webkit-scrollbar-thumb {
   background: #1f232d;
-  border: 2px solid #0a0b0d;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b44d0b;
+  background: #c85a17;
 }
 
 body {
@@ -44,71 +49,69 @@ body {
   overflow-x: hidden;
 }
 
-/* HUD elements */
+/* Modern CAD Grid */
 .hud-grid {
   background-image: 
-    linear-gradient(to right, rgba(209, 202, 191, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(209, 202, 191, 0.03) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-.hud-grid-fine {
-  background-image: 
-    linear-gradient(to right, rgba(180, 77, 11, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(180, 77, 11, 0.04) 1px, transparent 1px);
-  background-size: 8px 8px;
-}
-
-.hud-scanlines {
-  position: relative;
-}
-
-.hud-scanlines::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(
-    rgba(10, 11, 13, 0) 50%, 
-    rgba(10, 11, 13, 0.15) 50%
-  );
-  z-index: 5;
-  background-size: 100% 4px;
-  pointer-events: none;
-}
-
-/* HUD Viewfinder Decals */
+/* HUD Viewfinder Decals - Reserved for Hero Elements only */
 .hud-corner {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  border-color: #b44d0b;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(209, 202, 191, 0.3);
   border-style: solid;
   pointer-events: none;
   z-index: 10;
 }
-.hud-corner-tl { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; }
-.hud-corner-tr { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; }
-.hud-corner-bl { bottom: 0; left: 0; border-width: 0 0 1.5px 1.5px; }
-.hud-corner-br { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; }
+.hud-corner-tl { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.hud-corner-tr { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.hud-corner-bl { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.hud-corner-br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
 
-/* HUD Accessible Focus Styling */
+/* Spotlight Reveal effect for cards (Stripe/Linear style) */
+.card-spotlight {
+  position: relative;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.card-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.2px;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(255, 255, 255, 0.12),
+    transparent 85%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 5;
+}
+
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Accessible Focus Styling */
 .focus-hud {
   outline: none;
 }
 .focus-hud:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #0a0b0d, 0 0 0 4px #b44d0b;
-  border-color: #b44d0b;
-}
-
-/* Custom glow effect */
-.glow-primary {
-  box-shadow: 0 0 15px rgba(180, 77, 11, 0.15);
-}
-
-.glow-primary-hover:hover {
-  box-shadow: 0 0 20px rgba(180, 77, 11, 0.25);
+  box-shadow: 0 0 0 2px #0a0b0d, 0 0 0 4px #c85a17;
+  border-color: #c85a17;
 }
 
 /* Marquee scrolling animation */
@@ -124,42 +127,11 @@ body {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 45s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
-}
-
-/* Button Scanline Sweep Animation */
-@keyframes sweep {
-  0% {
-    top: -10%;
-  }
-  50% {
-    top: 110%;
-  }
-  100% {
-    top: 110%;
-  }
-}
-
-.animate-sweep {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: var(--color-primary-accent);
-  box-shadow: 0 0 8px var(--color-primary-accent);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.group:hover .animate-sweep,
-button:hover .animate-sweep,
-a:hover .animate-sweep {
-  opacity: 0.8;
-  animation: sweep 1.5s ease-in-out infinite;
 }
 
 /* ===== Art-Direction Layout Utilities ===== */
@@ -167,7 +139,7 @@ a:hover .animate-sweep {
 /* Vertical HUD separator line (for masthead strips, stats, etc.) */
 .hud-divider-v {
   width: 1px;
-  background-color: rgba(209, 202, 191, 0.12);
+  background-color: rgba(255, 255, 255, 0.08);
   align-self: stretch;
   flex-shrink: 0;
 }
@@ -175,7 +147,7 @@ a:hover .animate-sweep {
 /* Horizontal HUD separator line */
 .hud-divider-h {
   height: 1px;
-  background-color: rgba(209, 202, 191, 0.12);
+  background-color: rgba(255, 255, 255, 0.08);
   width: 100%;
 }
 
@@ -184,7 +156,7 @@ a:hover .animate-sweep {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  border-bottom: 1px solid rgba(209, 202, 191, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding: 0.625rem 0;
 }
 .roster-row:last-child {
@@ -195,7 +167,7 @@ a:hover .animate-sweep {
 .gallery-masonry {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 200px;
+  grid-auto-rows: 220px;
   gap: 1.5rem;
 }
 .gallery-masonry .cell-wide {
@@ -213,7 +185,7 @@ a:hover .animate-sweep {
 @media (max-width: 640px) {
   .gallery-masonry {
     grid-template-columns: 1fr;
-    grid-auto-rows: 220px;
+    grid-auto-rows: 240px;
   }
   .gallery-masonry .cell-wide,
   .gallery-masonry .cell-tall {
@@ -239,13 +211,12 @@ a:hover .animate-sweep {
 }
 .domain-rail-item:hover {
   color: rgba(209, 202, 191, 0.8);
-  border-left-color: rgba(180, 77, 11, 0.4);
-  background-color: rgba(180, 77, 11, 0.04);
+  border-left-color: rgba(255, 255, 255, 0.2);
 }
 .domain-rail-item.active {
-  color: #d1cabf;
-  border-left-color: #b44d0b;
-  background-color: rgba(180, 77, 11, 0.07);
+  color: #ededed;
+  border-left-color: var(--color-primary-accent);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 /* Alumni horizontal strip item */
@@ -254,7 +225,7 @@ a:hover .animate-sweep {
   flex-direction: column;
   gap: 0.25rem;
   padding: 0 1.25rem;
-  border-right: 1px solid rgba(209, 202, 191, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
   min-width: 160px;
   flex-shrink: 0;
 }
@@ -264,4 +235,3 @@ a:hover .animate-sweep {
 .alumni-strip-item:last-child {
   border-right: none;
 }
-

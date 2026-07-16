@@ -97,16 +97,16 @@ function ArtificialHorizon({ pitch, roll }: { pitch: number; roll: number }) {
           transform={`rotate(${-roll}, ${cx}, ${cy}) translate(0, ${pitchOffset})`}
         >
           {/* Ground */}
-          <rect x={-10} y={cy} width={size + 20} height={size + 10} fill="#2a1500" />
+          <rect x={-10} y={cy} width={size + 20} height={size + 10} fill="#141c24" />
           {/* Horizon line */}
           <line
             x1={-10}
             y1={cy}
             x2={size + 10}
             y2={cy}
-            stroke="#b44d0b"
+            stroke="#4A90D9"
             strokeWidth={1}
-            opacity={0.9}
+            opacity={0.75}
           />
           {/* Pitch ladder lines */}
           {[-10, -5, 5, 10].map((p) => (
@@ -116,27 +116,27 @@ function ArtificialHorizon({ pitch, roll }: { pitch: number; roll: number }) {
               y1={cy + p * 0.8}
               x2={cx + 8}
               y2={cy + p * 0.8}
-              stroke="#d1cabf"
+              stroke="#B8C4CE"
               strokeWidth={0.6}
-              opacity={0.4}
+              opacity={0.35}
             />
           ))}
         </g>
       </g>
 
       {/* Outer ring */}
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#b44d0b" strokeWidth={1} opacity={0.6} />
+      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#4A90D9" strokeWidth={0.8} opacity={0.4} />
 
       {/* Reticle — fixed */}
-      <line x1={cx - 12} y1={cy} x2={cx - 5} y2={cy} stroke="#b44d0b" strokeWidth={1.5} />
-      <line x1={cx + 5} y1={cy} x2={cx + 12} y2={cy} stroke="#b44d0b" strokeWidth={1.5} />
-      <circle cx={cx} cy={cy} r={1.2} fill="#b44d0b" />
+      <line x1={cx - 12} y1={cy} x2={cx - 5} y2={cy} stroke="#4A90D9" strokeWidth={1.2} />
+      <line x1={cx + 5} y1={cy} x2={cx + 12} y2={cy} stroke="#4A90D9" strokeWidth={1.2} />
+      <circle cx={cx} cy={cy} r={1.2} fill="#4A90D9" />
 
       {/* Roll marker at top */}
       <polygon
         points={`${cx},${cy - r + 1} ${cx - 2},${cy - r + 5} ${cx + 2},${cy - r + 5}`}
-        fill="#b44d0b"
-        opacity={0.9}
+        fill="#4A90D9"
+        opacity={0.8}
       />
     </svg>
   );
@@ -167,7 +167,7 @@ function CompassRose({ heading }: { heading: number }) {
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
       {/* Outer ring */}
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#b44d0b" strokeWidth={0.8} opacity={0.4} />
+      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#4A90D9" strokeWidth={0.8} opacity={0.35} />
 
       {/* Rotating group */}
       <g
@@ -186,9 +186,9 @@ function CompassRose({ heading }: { heading: number }) {
               y1={outer.y}
               x2={inner.x}
               y2={inner.y}
-              stroke={isMajor ? "#b44d0b" : "#d1cabf"}
+              stroke={isMajor ? "#4A90D9" : "#B8C4CE"}
               strokeWidth={isMajor ? 1 : 0.6}
-              opacity={isMajor ? 0.9 : 0.3}
+              opacity={isMajor ? 0.8 : 0.25}
             />
           );
         })}
@@ -204,10 +204,10 @@ function CompassRose({ heading }: { heading: number }) {
               textAnchor="middle"
               dominantBaseline="middle"
               fontSize={5}
-              fill={label === "N" ? "#b44d0b" : "#d1cabf"}
+              fill={label === "N" ? "#4A90D9" : "#B8C4CE"}
               fontFamily="monospace"
               fontWeight={label === "N" ? "bold" : "normal"}
-              opacity={label === "N" ? 1 : 0.6}
+              opacity={label === "N" ? 0.95 : 0.5}
             >
               {label}
             </text>
@@ -218,18 +218,18 @@ function CompassRose({ heading }: { heading: number }) {
       {/* Fixed heading needle */}
       <polygon
         points={`${cx},${cy - r + 8} ${cx - 2},${cy} ${cx + 2},${cy}`}
-        fill="#b44d0b"
-        opacity={0.9}
+        fill="#4A90D9"
+        opacity={0.85}
       />
       <polygon
         points={`${cx},${cy + r - 8} ${cx - 2},${cy} ${cx + 2},${cy}`}
-        fill="#d1cabf"
-        opacity={0.25}
+        fill="#B8C4CE"
+        opacity={0.2}
       />
-      <circle cx={cx} cy={cy} r={2} fill="#b44d0b" />
+      <circle cx={cx} cy={cy} r={2} fill="#4A90D9" />
 
       {/* Fixed crosshair ring */}
-      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#d1cabf" strokeWidth={0.5} opacity={0.1} />
+      <circle cx={cx} cy={cy} r={r} fill="none" stroke="#B8C4CE" strokeWidth={0.5} opacity={0.08} />
     </svg>
   );
 }
@@ -282,7 +282,7 @@ function BarGauge({
 
 const WAVE_POINTS = 40;
 
-function Waveform({ value, color = "#b44d0b" }: { value: number; color?: string }) {
+function Waveform({ value, color = "#4A90D9" }: { value: number; color?: string }) {
   // Initialise with a flat deterministic array (SSR-safe — no Math.random on server).
   // The useEffect below seeds realistic random values immediately on the client.
   const [points, setPoints] = useState<number[]>(
@@ -483,11 +483,9 @@ export default function FlightTelemetry() {
   // ── SSR skeleton ─────────────────────────────────────────────────────────
   if (!mounted) {
     return (
-      <div className="border border-secondary-accent/20 bg-surface/80 relative font-mono text-[10px] text-secondary-accent/70 flex flex-col gap-0 overflow-hidden min-h-[320px]">
-        <div className="hud-corner hud-corner-tl" />
-        <div className="hud-corner hud-corner-tr" />
-        <div className="hud-corner hud-corner-bl" />
-        <div className="hud-corner hud-corner-br" />
+      <div className="border border-secondary-accent/15 bg-surface-low relative font-mono text-[10px] text-secondary-accent/70 flex flex-col gap-0 overflow-hidden min-h-[320px]">
+        {/* Precision top-edge accent */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-accent/25 to-transparent pointer-events-none" />
         <div className="flex justify-between items-center border-b border-secondary-accent/10 px-4 py-2.5 text-primary-accent font-bold">
           <span className="tracking-wider">/// TELEMETRY_FEED_01</span>
           <span className="flex items-center gap-1.5 text-[9px]">
@@ -505,12 +503,9 @@ export default function FlightTelemetry() {
   }
 
   return (
-    <div className="border border-secondary-accent/20 bg-surface/80 relative font-mono text-[10px] text-secondary-accent/70 flex flex-col gap-0 overflow-hidden">
-      {/* HUD corners */}
-      <div className="hud-corner hud-corner-tl" />
-      <div className="hud-corner hud-corner-tr" />
-      <div className="hud-corner hud-corner-bl" />
-      <div className="hud-corner hud-corner-br" />
+    <div className="border border-secondary-accent/15 bg-surface-low relative font-mono text-[10px] text-secondary-accent/70 flex flex-col gap-0 overflow-hidden">
+      {/* Precision top-edge accent */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-accent/25 to-transparent pointer-events-none" />
 
       {/* ── Header ──────────────────────────────── */}
       <div className="flex justify-between items-center border-b border-secondary-accent/10 px-4 py-2.5 text-primary-accent font-bold">

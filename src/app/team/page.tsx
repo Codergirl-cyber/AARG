@@ -30,9 +30,6 @@ export default function Team() {
 
   return (
     <div className="relative w-full flex flex-col min-h-screen bg-bg-base py-12 md:py-20 px-4 md:px-8">
-      {/* HUD background overlays */}
-      <div className="absolute inset-0 hud-grid pointer-events-none opacity-30" />
-      <div className="absolute inset-0 hud-grid-fine pointer-events-none opacity-20" />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
         
@@ -231,10 +228,6 @@ export default function Team() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-secondary-accent/12 relative">
-            <div className="hud-corner hud-corner-tl" />
-            <div className="hud-corner hud-corner-tr" />
-            <div className="hud-corner hud-corner-bl" />
-            <div className="hud-corner hud-corner-br" />
 
             {Object.entries(teamData.members).map(([subteamName, membersList], sIdx) => (
               <ScrollReveal key={subteamName} delay={0.05 * sIdx}>
