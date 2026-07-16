@@ -72,13 +72,13 @@ export default function Contact() {
         <div className="border-b border-secondary-accent/15 pb-6">
           <span className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-primary-accent" />
-            {"COMMUNICATIONS_DECK // CONTACT"}
+            CONTACT
           </span>
           <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
             Connect With AARG
           </h1>
-          <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
-            {"COMMS_CHANNEL // ESTABLISH DIRECT LINK"}
+          <p className="text-secondary-accent/60 font-sans text-xs mt-1">
+            Have a question? Reach out to our team.
           </p>
         </div>
 
@@ -87,14 +87,14 @@ export default function Contact() {
           {/* Contact Information & Coordinates */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <ScrollReveal>
-              <div className="border border-secondary-accent/25 bg-surface/80 p-6 relative font-mono text-xs text-secondary-accent/80 flex flex-col gap-6">
+              <div className="border border-secondary-accent/25 bg-surface/80 p-6 relative text-xs text-secondary-accent/80 flex flex-col gap-6">
                 <div className="hud-corner hud-corner-tl" />
                 <div className="hud-corner hud-corner-tr" />
                 <div className="hud-corner hud-corner-bl" />
                 <div className="hud-corner hud-corner-br" />
 
-                <div className="text-primary-accent font-bold border-b border-secondary-accent/15 pb-2 uppercase text-[10px]">
-                  {"// MISSION_COORDINATES"}
+                <div className="font-mono text-xs text-primary-accent font-bold border-b border-secondary-accent/15 pb-2 uppercase">
+                  Contact Information
                 </div>
 
                 <div className="flex flex-col gap-4 font-sans text-xs">
@@ -103,8 +103,8 @@ export default function Contact() {
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-primary-accent shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-mono text-[9px] block text-secondary-accent/50 uppercase font-semibold">
-                        Laboratory Base Location:
+                      <span className="font-sans text-xs block text-secondary-accent/50 font-semibold mb-0.5">
+                        Address
                       </span>
                       <span className="text-secondary-accent/90">
                         {siteConfig.labRoom}, {siteConfig.department}, <br />
@@ -118,8 +118,8 @@ export default function Contact() {
                   <div className="flex items-center gap-3">
                     <Mail className="w-5 h-5 text-primary-accent shrink-0" />
                     <div>
-                      <span className="font-mono text-[9px] block text-secondary-accent/50 uppercase font-semibold">
-                        General Email:
+                      <span className="font-sans text-xs block text-secondary-accent/50 font-semibold mb-0.5">
+                        Email
                       </span>
                       <a href={`mailto:${siteConfig.email}`} className="text-secondary-accent/90 hover:text-primary-accent hover:underline font-mono">
                         {siteConfig.email}
@@ -131,8 +131,8 @@ export default function Contact() {
                   <div className="flex items-center gap-3">
                     <Phone className="w-5 h-5 text-primary-accent shrink-0" />
                     <div>
-                      <span className="font-mono text-[9px] block text-secondary-accent/50 uppercase font-semibold">
-                        Systems Hotline:
+                      <span className="font-sans text-xs block text-secondary-accent/50 font-semibold mb-0.5">
+                        Phone
                       </span>
                       <a href={`tel:${siteConfig.phone}`} className="text-secondary-accent/90 hover:text-primary-accent hover:underline font-mono">
                         {siteConfig.phone}
@@ -143,8 +143,8 @@ export default function Contact() {
 
                 {/* Social links block */}
                 <div className="border-t border-secondary-accent/15 pt-4">
-                  <span className="font-mono text-[9px] block text-secondary-accent/50 uppercase font-semibold mb-3">
-                    {"// SOCIAL_MEDIA_FEEDS"}
+                  <span className="font-sans text-xs block text-secondary-accent/50 font-semibold mb-3">
+                    Follow Us
                   </span>
                   <div className="flex items-center gap-3">
                     <a
@@ -190,32 +190,7 @@ export default function Contact() {
               </div>
             </ScrollReveal>
 
-            {/* Embedded Google Map (Mock representation or generic embed if available) */}
-            <ScrollReveal delay={0.2}>
-              <div className="border border-secondary-accent/15 relative h-56 bg-surface overflow-hidden">
-                <div className="hud-corner hud-corner-tl" />
-                <div className="hud-corner hud-corner-tr" />
-                <div className="hud-corner hud-corner-bl" />
-                <div className="hud-corner hud-corner-br" />
-                {/* Styled Map Placeholder representing laboratory location */}
-                <div className="absolute inset-0 bg-bg-base/80 p-6 flex flex-col justify-between font-mono text-[10px] text-secondary-accent/70 hud-grid">
-                  <div className="flex justify-between items-center text-primary-accent font-bold">
-                    <span>{"GOOGLE_MAPS_FEED"}</span>
-                    <span className="text-[8px] border border-primary-accent/30 px-1 py-0.5 rounded-sm">{"GPS_OK"}</span>
-                  </div>
-                  <div className="text-center py-4 text-xs font-sans text-secondary-accent/80 font-semibold uppercase tracking-wider">
-                    {siteConfig.college} <br />
-                    <span className="text-[10px] font-mono text-secondary-accent/40 font-normal">
-                      {"LAT: 12.9716° N // LON: 77.5946° E"}
-                    </span>
-                  </div>
-                  <div className="border-t border-secondary-accent/10 pt-2 text-[8px] flex justify-between uppercase">
-                    <span>{"LAB_REF:"} {siteConfig.labRoom}</span>
-                    <span>{"MAPS_SECURE"}</span>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
+
           </div>
 
           {/* Simple Contact Form */}
@@ -227,21 +202,18 @@ export default function Contact() {
                 <div className="hud-corner hud-corner-bl" />
                 <div className="hud-corner hud-corner-br" />
 
-                <div className="border-b border-secondary-accent/15 pb-4 mb-6 font-mono">
-                  <span className="text-[10px] text-primary-accent font-bold uppercase tracking-widest">
-                    {"TRANSMISSION_FORM"}
-                  </span>
-                  <h3 className="font-display text-lg font-bold text-secondary-accent uppercase mt-1">
-                    ESTABLISH DUPLEX COMMS
+                <div className="border-b border-secondary-accent/15 pb-4 mb-6">
+                  <h3 className="font-display text-lg font-bold text-secondary-accent">
+                    Send Us a Message
                   </h3>
                 </div>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5 text-xs md:text-sm">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Name */}
-                    <div className="flex flex-col gap-2 font-mono">
-                      <label htmlFor="name" className="text-secondary-accent/60 uppercase font-semibold text-[10px]">
-                        {"// SENDER_NAME"}
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="name" className="text-xs text-secondary-accent/70 font-semibold font-sans">
+                        Name
                       </label>
                       <input
                         type="text"
@@ -250,15 +222,15 @@ export default function Contact() {
                         required
                         value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="ENTER NAME"
-                        className="bg-bg-base border border-secondary-accent/15 p-3 text-secondary-accent placeholder:text-secondary-accent/30 font-mono tracking-widest focus:outline-none focus:border-primary-accent rounded-none"
+                        placeholder="Your name"
+                        className="bg-bg-base border border-secondary-accent/15 p-3 text-secondary-accent placeholder:text-secondary-accent/30 font-sans focus:outline-none focus:border-primary-accent rounded-none"
                       />
                     </div>
 
                     {/* Email */}
-                    <div className="flex flex-col gap-2 font-mono">
-                      <label htmlFor="email" className="text-secondary-accent/60 uppercase font-semibold text-[10px]">
-                        {"// SENDER_EMAIL"}
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="email" className="text-xs text-secondary-accent/70 font-semibold font-sans">
+                        Email
                       </label>
                       <input
                         type="email"
@@ -267,16 +239,16 @@ export default function Contact() {
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="ENTER EMAIL"
-                        className="bg-bg-base border border-secondary-accent/15 p-3 text-secondary-accent placeholder:text-secondary-accent/30 font-mono tracking-widest focus:outline-none focus:border-primary-accent rounded-none"
+                        placeholder="you@example.com"
+                        className="bg-bg-base border border-secondary-accent/15 p-3 text-secondary-accent placeholder:text-secondary-accent/30 font-sans focus:outline-none focus:border-primary-accent rounded-none"
                       />
                     </div>
                   </div>
 
                   {/* Subject */}
-                  <div className="flex flex-col gap-2 font-mono">
-                    <label htmlFor="subject" className="text-secondary-accent/60 uppercase font-semibold text-[10px]">
-                      {"// TELEMETRY_SUBJECT"}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="subject" className="text-xs text-secondary-accent/70 font-semibold font-sans">
+                      Subject
                     </label>
                     <input
                       type="text"
@@ -285,15 +257,15 @@ export default function Contact() {
                       required
                       value={formData.subject}
                       onChange={handleInputChange}
-                      placeholder="ENTER TOPIC / REASON"
-                      className="bg-bg-base border border-secondary-accent/15 p-3 text-secondary-accent placeholder:text-secondary-accent/30 font-mono tracking-widest focus:outline-none focus:border-primary-accent rounded-none"
+                      placeholder="What's this about?"
+                      className="bg-bg-base border border-secondary-accent/15 p-3 text-secondary-accent placeholder:text-secondary-accent/30 font-sans focus:outline-none focus:border-primary-accent rounded-none"
                     />
                   </div>
 
                   {/* Message */}
-                  <div className="flex flex-col gap-2 font-mono">
-                    <label htmlFor="message" className="text-secondary-accent/60 uppercase font-semibold text-[10px]">
-                      {"// MESSAGE_BODY"}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="message" className="text-xs text-secondary-accent/70 font-semibold font-sans">
+                      Message
                     </label>
                     <textarea
                       id="message"
@@ -302,22 +274,22 @@ export default function Contact() {
                       required
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="WRITE TRANSMISSION METRICS..."
-                      className="bg-bg-base border border-secondary-accent/15 p-3 text-secondary-accent placeholder:text-secondary-accent/30 font-sans tracking-wide focus:outline-none focus:border-primary-accent rounded-none resize-none"
+                      placeholder="Write your message..."
+                      className="bg-bg-base border border-secondary-accent/15 p-3 text-secondary-accent placeholder:text-secondary-accent/30 font-sans focus:outline-none focus:border-primary-accent rounded-none resize-none"
                     />
                   </div>
 
                   {/* Status Indicator / Submit */}
-                  <div className="flex items-center justify-between mt-2 font-mono text-xs">
+                  <div className="flex items-center justify-between mt-2 font-sans text-xs">
                     <div>
                       {status === "sending" && (
-                        <span className="text-primary-accent font-bold animate-pulse uppercase">
-                          {"// TRANSMITTING DATA..."}
+                        <span className="text-primary-accent font-bold animate-pulse">
+                          Sending...
                         </span>
                       )}
                       {status === "success" && (
-                        <span className="text-green-500 font-bold uppercase">
-                          {"// TRANSMISSION SUCCESSFUL [COMMS_UP]"}
+                        <span className="text-green-500 font-bold">
+                          Message sent successfully.
                         </span>
                       )}
                     </div>
@@ -325,9 +297,9 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={status === "sending"}
-                      className="font-mono text-xs font-bold border border-primary-accent bg-primary-accent text-white px-6 py-3.5 hover:bg-transparent hover:text-primary-accent transition-all duration-250 focus-hud rounded-none flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                      className="font-sans text-xs font-bold border border-primary-accent bg-primary-accent text-white px-6 py-3.5 hover:bg-transparent hover:text-primary-accent transition-all duration-250 focus-hud rounded-none flex items-center gap-2 cursor-pointer disabled:opacity-50"
                     >
-                      <Send className="w-3.5 h-3.5" /> SEND_TRANSMISSION
+                      <Send className="w-3.5 h-3.5" /> Send Message
                     </button>
                   </div>
                 </form>
