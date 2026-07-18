@@ -15,22 +15,20 @@ export type Subteam =
   | "Manufacturing & Propulsion"
   | "Business & Sponsorship"
   | "Alumni"
-    "Members": [
-      // Ordered per request: Hitesh first, then Shreyas, Siddesh, Somshekhar, then the rest
-      { name: "Hitesh Patil", role: "Current NIDAR 2027 Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/hitesh-patil07/" },
-      { name: "Shreyas Kharade", role: "Aerodynamics Lead", subteam: "Members" },
-      { name: "Siddesh Kavitkar", role: "Avionics and Core Firmware Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/siddhesh-kavitkar-1a3469339/", photoUrl: "/images/team/siddhesh%20Kavitkar.jpg" },
-      { name: "Somshekhar Hunasimarad", role: "Structures and Fabrication Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/somshekhar-hunasimarad/", photoUrl: "/images/team/Someshkhar%20Hunasimarad.jpg" },
-      { name: "Pushkar Lokhande", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/pushkar-lokhande-246b11311/" },
-      { name: "Karan Tikoo", role: "Member", subteam: "Members", photoUrl: "/images/team/Karan%20Tikoo.png" },
-      { name: "Vishwank Ramji", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/vishwank-ramji-6031a0359/" },
-      { name: "Harshvardhan Karkera", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/harshvardhan-karkera-70479b386/" },
-      { name: "Sarthak Chikte", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/sarthak-chikte-ba8780291/", photoUrl: "/images/team/Sarthak%20Chikte.jpg" },
-      { name: "Sharal Vishvakarma", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/sharal-vishvkarma-b194792bb/" },
-      { name: "Shravani Chidrawar", role: "Member", subteam: "Members" },
-      { name: "Aaron Mobby", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/aaron-mobby-5819a0289/", photoUrl: "/images/team/Aaron%20Mobby.png" },
-      { name: "Nandini Gheware", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/nandini-gheware-287400386/", photoUrl: "/images/team/nandini%20gheware.png" }
-    ]
+  | "Members";
+
+export interface TeamData {
+  leadership: TeamMember[];
+  faculty: TeamMember[];
+  leads: TeamMember[];
+  members: Record<string, TeamMember[]>;
+  alumni: {
+    name: string;
+    role: string;
+    classYear: string;
+    linkedinUrl?: string;
+  }[];
+}
 export const teamData: TeamData = {
   leadership: [
     {
@@ -59,12 +57,12 @@ export const teamData: TeamData = {
   leads: [],
   members: {
     "Members": [
-      { name: "Siddesh Kavitkar", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/siddhesh-kavitkar-1a3469339/", photoUrl: "/images/team/siddhesh%20Kavitkar.jpg" },
-      { name: "Hitesh Patil", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/hitesh-patil07/" },
+      { name: "Hitesh Patil", role: "Current NIDAR 2027 Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/hitesh-patil07/" },
+      { name: "Shreyas Kharade", role: "Aerodynamics Lead", subteam: "Members" },
+      { name: "Siddesh Kavitkar", role: "Avionics and Core Firmware Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/siddhesh-kavitkar-1a3469339/", photoUrl: "/images/team/siddhesh%20Kavitkar.jpg" },
+      { name: "Somshekhar Hunasimarad", role: "Structures and Fabrication Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/somshekhar-hunasimarad/", photoUrl: "/images/team/Someshkhar%20Hunasimarad.jpg" },
       { name: "Pushkar Lokhande", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/pushkar-lokhande-246b11311/" },
       { name: "Karan Tikoo", role: "Member", subteam: "Members", photoUrl: "/images/team/Karan%20Tikoo.png" },
-      { name: "Shreyas Kharade", role: "Member", subteam: "Members" },
-      { name: "Somshekhar Hunasimarad", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/somshekhar-hunasimarad/", photoUrl: "/images/team/Someshkhar%20Hunasimarad.jpg" },
       { name: "Vishwank Ramji", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/vishwank-ramji-6031a0359/" },
       { name: "Harshvardhan Karkera", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/harshvardhan-karkera-70479b386/" },
       { name: "Sarthak Chikte", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/sarthak-chikte-ba8780291/", photoUrl: "/images/team/Sarthak%20Chikte.jpg" },

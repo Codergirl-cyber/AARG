@@ -69,7 +69,7 @@ export default function Team() {
           </div>
 
           <div className="text-center">
-            <motion.div whileHover={{ scale: 1.02 }} className="mx-auto w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border border-secondary-accent/20 flex items-center justify-center bg-surface mb-3">
+            <motion.div whileHover={{ scale: 1.02 }} className="mx-auto w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border border-secondary-accent/20 flex items-center justify-center bg-surface mb-3">
               {captain.photoUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={captain.photoUrl} alt={captain.name} className="object-cover w-full h-full" />
