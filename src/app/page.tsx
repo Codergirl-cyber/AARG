@@ -59,7 +59,7 @@ export default function Home() {
         {/* Full-bleed hero background image */}
         <Image
           src="/images/hero%20image.png"
-          alt="AARG hero image"
+          alt="hero image updated"
           fill
           sizes="100vw"
           quality={100}
