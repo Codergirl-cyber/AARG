@@ -26,7 +26,7 @@ export default function Projects() {
   ];
 
   return (
-    <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-4 md:px-8 overflow-hidden">
+    <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-6 md:px-8 overflow-hidden">
       <PageBackground />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
@@ -94,7 +94,7 @@ export default function Projects() {
 
               {/* Technical Specifications Timeline Stream */}
               <div className="lg:col-span-5 w-full">
-                <div className="border-l border-primary-accent/20 pl-6 relative flex flex-col gap-6">
+                <div className="border-l border-primary-accent/20 pl-6 ml-4 sm:ml-6 lg:ml-0 relative flex flex-col gap-6">
                   {/* Spec Row 1 */}
                   <div className="relative group flex flex-col gap-1">
                     <div className="absolute -left-[29px] top-1 w-2 h-2 bg-primary-accent rounded-full animate-pulse" />

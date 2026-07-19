@@ -129,7 +129,7 @@ export default function Achievements() {
   });
 
   return (
-    <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-4 md:px-8 overflow-hidden">
+    <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-6 md:px-8 overflow-hidden">
       <PageBackground />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-10 md:gap-14">

@@ -47,17 +47,18 @@ export default function Home() {
       {/* SECTION 1: HERO SECTION */}
       <section 
         ref={heroRef}
-        className="relative min-h-[90vh] flex items-center border-b border-secondary-accent/15 hud-grid hud-scanlines py-20 px-4 md:px-8 overflow-hidden"
+        className="relative min-h-[90vh] flex items-center border-b border-secondary-accent/15 hud-grid hud-scanlines py-20 px-6 md:px-8 overflow-x-hidden overflow-hidden"
       >
         <video
           key={heroSrc}
+          src={heroSrc}
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           poster="/images/hero/hero-poster.jpg"
-          className="absolute inset-0 w-full h-full object-cover object-[center_40%] md:object-center z-0 brightness-75"
+          className="absolute inset-0 w-full h-full object-cover object-[center_65%] md:object-center z-0 brightness-90 md:brightness-75 opacity-55 md:opacity-100 max-w-full overflow-hidden"
         >
           <source src={heroSrc} type="video/mp4" />
         </video>
@@ -81,10 +82,10 @@ export default function Home() {
           {/* Hero Content */}
           <motion.div 
             style={shouldReduceMotion ? {} : { y: yText, opacity: opacityHero }}
-            className="flex flex-col gap-6 text-left max-w-2xl"
+            className="flex flex-col space-y-6 md:space-y-8 text-left max-w-2xl"
           >
             {/* Main Taglines */}
-            <h1 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight text-secondary-accent leading-tight">
+            <h1 className="font-display text-[28px] sm:text-3xl md:text-5xl font-extrabold tracking-tight text-secondary-accent leading-[1.15] md:leading-tight">
               Designing, Building, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-accent via-primary-accent/80 to-secondary-accent">
                 and Flying
@@ -92,12 +93,12 @@ export default function Home() {
               Next-Gen UAVs.
             </h1>
 
-            <p className="text-secondary-accent/80 text-base md:text-lg font-sans leading-relaxed max-w-xl">
+            <p className="text-secondary-accent/80 text-sm md:text-base lg:text-lg font-sans leading-relaxed max-w-[90%] sm:max-w-xl">
               AARG is a student-led engineering team within AISSMS IOIT&apos;s Drone club dedicated to autonomous aviation, building high-performance fixed-wing aircraft and heavy-lift multirotor drones for prestigious competitions.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 mt-6">
+            <div className="flex flex-wrap gap-4 pt-2 md:pt-0">
               <Link
                 href="/join"
                 className="font-sans text-sm font-semibold border border-primary-accent bg-primary-accent text-white px-7 py-3 hover:bg-primary-accent/95 transition-all duration-250 focus-hud rounded-md inline-flex items-center gap-2 shadow-sm hover:shadow-[0_10px_30px_rgba(200,90,23,0.18)]"
