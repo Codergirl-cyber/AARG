@@ -74,7 +74,7 @@ export default function Header() {
                   <img
                     src="/images/logo.png"
                     alt="AARG Logo"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain rounded-full"
                     onError={() => setLogoError(true)}
                   />
                 ) : (

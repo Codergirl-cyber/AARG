@@ -74,7 +74,7 @@ export default function Footer() {
               <img
                 src="/images/logo.png"
                 alt="AARG Logo"
-                className="w-10 h-10 object-contain"
+                className="w-10 h-10 object-contain rounded-full"
               />
               {siteConfig.name}
             </Link>

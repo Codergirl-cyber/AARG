@@ -40,7 +40,7 @@ export default function About() {
               <img
                 src="/images/logo.png"
                 alt="AARG Badge Logo"
-                className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform duration-500 group-hover:scale-105 rounded-full"
               />
             </div>
             
