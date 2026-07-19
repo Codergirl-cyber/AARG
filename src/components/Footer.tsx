@@ -69,12 +69,12 @@ export default function Footer() {
           <div className="flex flex-col gap-5">
             <Link
               href="/"
-              className="font-display font-bold text-xl tracking-wider text-secondary-accent flex items-center gap-2.5 focus-hud w-fit"
+              className="font-display font-bold text-2xl tracking-wider text-secondary-accent flex items-center gap-4 focus-hud w-fit"
             >
               <img
                 src="/images/logo.png"
                 alt="AARG Logo"
-                className="w-10 h-10 object-contain rounded-full"
+                className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-full"
               />
               {siteConfig.name}
             </Link>
