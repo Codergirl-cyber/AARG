@@ -5,6 +5,7 @@ import Image from "next/image";
 import { galleryItems } from "@/content/gallery";
 import Lightbox from "@/components/Lightbox";
 import ScrollReveal from "@/components/ScrollReveal";
+import PageBackground from "@/components/PageBackground";
 
 // Masonry pattern: index-based cell types
 // 0 = wide (col-span-2), 4 = tall (row-span-2), others = default
@@ -34,9 +35,8 @@ export default function Gallery() {
   };
 
   return (
-    <div className="relative w-full flex flex-col min-h-screen bg-bg-base py-12 md:py-20 px-4 md:px-8">
-      {/* HUD Background overlays */}
-      <div className="absolute inset-0 hud-grid pointer-events-none opacity-30" />
+    <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-4 md:px-8 overflow-hidden">
+      <PageBackground />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-12">
         {/* Page Header */}

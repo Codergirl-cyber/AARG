@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 
 import ScrollReveal from "@/components/ScrollReveal";
+import PageBackground from "@/components/PageBackground";
 
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
@@ -15,27 +16,6 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 
 export default function Home() {
   const shouldReduceMotion = useReducedMotion();
-
-  const scrollDots = Array.from({ length: 560 }, (_, index) => {
-    const seeded = index * 83 + 19;
-    const rand = (n: number) => Math.abs(Math.sin(n) * 10000 % 1);
-    const x = 1 + Math.floor(rand(seeded) * 97);
-    const y = 2 + Math.floor(rand(seeded + 23) * 94);
-    const size = 0.8 + rand(seeded + 7) * 1.0;
-    const dx = Math.floor(rand(seeded + 17) * 18) - 9;
-    const dy = Math.floor(rand(seeded + 29) * 18) - 9;
-    const delay = `${-(rand(seeded + 11) * 9.5).toFixed(2)}s`;
-    const duration = `${2.4 + rand(seeded + 13) * 2.8}s`;
-    return {
-      left: `${Math.min(x, 98)}%`,
-      top: `${Math.min(y, 96)}%`,
-      size,
-      dx,
-      dy,
-      delay,
-      duration,
-    };
-  });
 
   // Scroll tracking for Hero section parallax
   const heroRef = useRef<HTMLDivElement>(null);
@@ -125,24 +105,7 @@ export default function Home() {
 
       {/* SECTION 3: NARRATIVE ARC — Editorial numbered rows, no cards */}
       <section className="py-16 md:py-28 bg-surface relative z-10 px-4 md:px-8">
-        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-          {scrollDots.map((dot, index) => (
-            <span
-              key={index}
-              className="scroll-dot"
-              style={{
-                left: dot.left,
-                top: dot.top,
-                width: `${dot.size}px`,
-                height: `${dot.size}px`,
-                animationDelay: dot.delay,
-                animationDuration: dot.duration,
-                ["--dx" as any]: `${dot.dx}px`,
-                ["--dy" as any]: `${dot.dy}px`,
-              } as React.CSSProperties}
-            />
-          ))}
-        </div>
+        <PageBackground />
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-0">
           
           <div className="mb-12">

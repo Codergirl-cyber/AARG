@@ -2,14 +2,13 @@
 
 import React from "react";
 import ScrollReveal from "@/components/ScrollReveal";
+import PageBackground from "@/components/PageBackground";
 import { Mail, Phone } from "lucide-react";
 
 export default function Contact() {
   return (
-    <div className="relative w-full flex flex-col min-h-screen bg-bg-base py-12 md:py-20 px-4 md:px-8">
-      {/* HUD Background Overlays */}
-      <div className="absolute inset-0 hud-grid pointer-events-none opacity-30" />
-      <div className="absolute inset-0 hud-grid-fine pointer-events-none opacity-20" />
+    <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-4 md:px-8 overflow-hidden">
+      <PageBackground />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-12 md:gap-16">
         

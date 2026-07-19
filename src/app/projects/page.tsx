@@ -2,6 +2,7 @@
 
 import React from "react";
 import ScrollReveal from "@/components/ScrollReveal";
+import PageBackground from "@/components/PageBackground";
 import { motion } from "framer-motion";
 import { Cpu, ExternalLink, HardDrive, Layers, Compass } from "lucide-react";
 
@@ -25,10 +26,8 @@ export default function Projects() {
   ];
 
   return (
-    <div className="relative w-full flex flex-col min-h-screen bg-bg-base py-12 md:py-20 px-4 md:px-8">
-      {/* HUD background grid textures */}
-      <div className="absolute inset-0 hud-grid pointer-events-none opacity-30" />
-      <div className="absolute inset-0 hud-grid-fine pointer-events-none opacity-20" />
+    <div className="relative w-full flex flex-col min-h-screen py-12 md:py-20 px-4 md:px-8 overflow-hidden">
+      <PageBackground />
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col gap-16 md:gap-24">
         
@@ -36,14 +35,11 @@ export default function Projects() {
         <div className="border-b border-secondary-accent/15 pb-6">
           <span className="font-mono text-xs text-primary-accent tracking-widest uppercase flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-primary-accent" />
-            PROJECT_MANIFEST // AUTON_FLIGHT_SYS
+            ACTIVE_R&amp;D // IN-HOUSE HARDWARE &amp; FIRMWARE
           </span>
           <h1 className="font-display text-3xl md:text-4xl font-bold text-secondary-accent uppercase tracking-tight mt-2">
             Research Projects
           </h1>
-          <p className="text-secondary-accent/60 font-mono text-[11px] mt-1">
-            ACTIVE_R&amp;D // IN-HOUSE HARDWARE &amp; FIRMWARE
-          </p>
         </div>
 
         {/* PROJECT SPOTLIGHT - MARUT */}
