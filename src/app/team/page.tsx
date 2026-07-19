@@ -176,7 +176,7 @@ export default function Team() {
               )}
             </motion.div>
             <h3 className="font-display text-lg font-bold text-secondary-accent uppercase tracking-tight">{captain.name}</h3>
-            <p className="font-mono text-sm text-secondary-accent/60">Student President</p>
+            <p className="font-mono text-sm text-secondary-accent/60">President</p>
             {captain.linkedinUrl && (
               <a
                 href={captain.linkedinUrl}

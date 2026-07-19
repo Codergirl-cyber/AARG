@@ -85,7 +85,7 @@ export default function About() {
               </h2>
               <div className="font-sans text-sm md:text-base text-secondary-accent/85 space-y-4 leading-relaxed max-w-3xl">
                 <p>
-                  AARG's mission is to build a strong community of innovators who thrive on competition. By designing, building, and flying UAVs for national and international challenges — from SAE Aero Design to NIDAR and ISRO's IROC-U — the team turns classroom learning into competitive, hands-on engineering. Students collaborate across disciplines, tackle meaningful technical problems under competition constraints, and graduate ready for careers in aerospace, robotics, and advanced technology, while strengthening AISSMS IoIT's growing culture of innovation and competitive achievement.
+                  AARG&apos;s mission is to build a strong community of innovators who thrive on competition. By designing, building, and flying UAVs for national and international challenges such as NIDAR and ISRO&apos;s IROC-U, the team transforms classroom learning into hands-on engineering experience. Students collaborate across disciplines, solve real-world technical challenges under competitive environments, and graduate prepared for careers in aerospace, robotics, and advanced technology, while strengthening AISSMS IoIT&apos;s culture of innovation and engineering excellence.
                 </p>
               </div>
             </div>

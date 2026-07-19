@@ -101,7 +101,7 @@ export default function Home() {
 
 
       {/* SECTION 3: NARRATIVE ARC — Editorial numbered rows, no cards */}
-      <section className="py-16 md:py-28 bg-surface relative z-10 px-4 md:px-8">
+      <section className="pt-16 md:pt-28 pb-8 md:pb-12 bg-surface relative z-10 px-4 md:px-8">
         <PageBackground />
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-0">
           
@@ -165,7 +165,7 @@ export default function Home() {
               <div className="col-span-12 md:col-span-9 flex flex-col gap-3">
                 <h3 className="font-display text-lg md:text-xl font-bold text-secondary-accent uppercase tracking-tight">Our Goal</h3>
                 <p className="text-secondary-accent/75 font-sans text-sm md:text-base leading-relaxed max-w-2xl">
-                  AARG's mission is to build a strong community of innovators who thrive on competition. By designing, building, and flying UAVs for national and international challenges — from SAE Aero Design to NIDAR and ISRO's IROC-U — the team turns classroom learning into competitive, hands-on engineering. Students collaborate across disciplines, tackle meaningful technical problems under competition constraints, and graduate ready for careers in aerospace, robotics, and advanced technology, while strengthening AISSMS IoIT's growing culture of innovation and competitive achievement.
+                  AARG&apos;s mission is to build a strong community of innovators who thrive on competition. By designing, building, and flying UAVs for national and international challenges such as NIDAR and ISRO&apos;s IROC-U, the team transforms classroom learning into hands-on engineering experience. Students collaborate across disciplines, solve real-world technical challenges under competitive environments, and graduate prepared for careers in aerospace, robotics, and advanced technology, while strengthening AISSMS IoIT&apos;s culture of innovation and engineering excellence.
                 </p>
               </div>
             </div>
@@ -173,7 +173,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION 4: TESTIMONIALS */}
+      <section className="pt-6 md:pt-10 pb-16 md:pb-24 bg-surface relative z-10 px-4 md:px-8">
+        <PageBackground />
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6 md:gap-8">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-secondary-accent text-center">
+            Testimonials
+          </h2>
 
+          <ScrollReveal>
+            <div className="w-full bg-transparent border border-secondary-accent/15 rounded-2xl px-6 py-10 md:px-12 md:py-12 flex flex-col items-center gap-8">
+              <p className="text-secondary-accent/90 font-sans text-sm md:text-base leading-relaxed text-center italic max-w-3xl">
+                &ldquo;Being a part of the team was an incredible journey that made me rethink how actual hardware interacts in real-world conditions. I would have probably spent all my time watching evangelion in the morning and rotting over the unholy nature of C++ by the night if it wasn&apos;t for the team to pick me up every day from my own headspace and drag me towards some of the most demanding algorithmic problems in the aerospace industry.&rdquo;
+              </p>
+
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-secondary-accent/20 shrink-0 bg-surface">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/team/ayush sharma.png"
+                    alt="Ayush Sharma"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-sans text-sm font-semibold text-secondary-accent">
+                    Ayush Sharma
+                  </span>
+                  <span className="font-sans text-xs text-secondary-accent/55">
+                    IROC-U Nav Lead
+                  </span>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
     </div>
   );
