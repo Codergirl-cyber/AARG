@@ -25,7 +25,7 @@ export default function About() {
         {/* Logo and Intro Section */}
         <ScrollReveal delay={0.05}>
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 pb-12 border-b border-secondary-accent/10">
-            <div className="flex-shrink-0 relative w-44 h-44 sm:w-48 sm:h-48 rounded-full border border-secondary-accent/15 bg-surface-low/30 p-5 flex items-center justify-center group hover:border-primary-accent/40 transition-all duration-300 shadow-[0_0_20px_rgba(200,90,23,0.04)] hover:shadow-[0_0_30px_rgba(200,90,23,0.12)]">
+            <div className="flex-shrink-0 relative w-56 h-56 sm:w-64 sm:h-64 rounded-full border border-secondary-accent/15 bg-surface-low/30 p-0 flex items-center justify-center group hover:border-primary-accent/40 transition-all duration-300 shadow-[0_0_20px_rgba(200,90,23,0.04)] hover:shadow-[0_0_30px_rgba(200,90,23,0.12)]">
               {/* HUD corners */}
               <div className="hud-corner hud-corner-tl !border-secondary-accent/20" />
               <div className="hud-corner hud-corner-tr !border-secondary-accent/20" />
