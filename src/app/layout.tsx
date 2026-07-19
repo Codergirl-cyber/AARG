@@ -41,9 +41,9 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-bg-base text-foreground font-sans selection:bg-primary-accent selection:text-white">
+      <body className="min-h-full flex flex-col bg-bg-base text-foreground font-sans selection:bg-primary-accent selection:text-white overflow-x-hidden max-w-[100vw]">
         <Header />
-        <main className="flex-grow flex flex-col pt-16">
+        <main className="flex-grow flex flex-col pt-16 min-w-0 w-full overflow-x-hidden">
           <RouteTransition>{children}</RouteTransition>
         </main>
         <Footer />

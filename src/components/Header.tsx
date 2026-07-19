@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronRight } from "lucide-react";
-import { siteConfig } from "@/content/site";
 import { motion, AnimatePresence } from "framer-motion";
 import Magnetic from "@/components/Magnetic";
 
@@ -17,17 +16,12 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Accessibility: Close drawer on Escape key press
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -38,6 +32,14 @@ export default function Header() {
       window.addEventListener("keydown", handleKeyDown);
     }
     return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   const navLinks = [
@@ -54,74 +56,56 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-40 w-full max-w-[100vw] transition-all duration-500 ${
           scrolled
             ? "bg-surface-mid/95 backdrop-blur-xl py-3 border-b border-white/10 shadow-[0_2px_18px_rgba(0,0,0,0.35)]"
             : "bg-surface-mid/95 py-3 border-b border-white/10"
         }`}
       >
-        <div className="max-w-screen-xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+        <div className="max-w-screen-xl mx-auto w-full px-4 md:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-3 min-w-0">
             {/* Brand Logo */}
-            <div className="flex items-center gap-4 shrink-0">
-              <Link
-                href="/"
-                className="flex items-center gap-4 group focus-hud"
-              >
-                {/* Logo Container */}
-                <div className="relative w-11 h-11 flex-shrink-0 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300">
-                  {!logoError ? (
-                    <img
-                      src="/images/logo.png"
-                      alt="AARG Logo"
-                      className="w-full h-full object-contain"
-                      onError={() => setLogoError(true)}
+            <Link
+              href="/"
+              className="flex items-center gap-2 sm:gap-3 group focus-hud min-w-0 shrink"
+            >
+              <div className="relative w-7 h-7 sm:w-9 sm:h-9 lg:w-11 lg:h-11 flex-shrink-0 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300">
+                {!logoError ? (
+                  <img
+                    src="/images/logo.png"
+                    alt="AARG Logo"
+                    className="w-full h-full object-contain"
+                    onError={() => setLogoError(true)}
+                  />
+                ) : (
+                  <svg
+                    viewBox="0 0 100 100"
+                    className="w-full h-full text-primary-accent"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
+                    <path
+                      d="M50 20C50 20 44 38 44 55C44 62 48 66 50 66C52 66 56 62 56 55C56 38 50 20 50 20Z"
+                      fill="currentColor"
+                      opacity="0.85"
                     />
-                  ) : (
-                    <svg
-                      viewBox="0 0 100 100"
-                      className="w-full h-full text-primary-accent"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
-                      <path
-                        d="M50 20C50 20 44 38 44 55C44 62 48 66 50 66C52 66 56 62 56 55C56 38 50 20 50 20Z"
-                        fill="currentColor"
-                        opacity="0.85"
-                      />
-                      <path
-                        d="M44 48C40 50 35 55 35 60C35 63 39 63 43 61L44 58"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M56 48C60 50 65 55 65 60C65 63 61 63 57 61L56 58"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  )}
-                </div>
+                  </svg>
+                )}
+              </div>
 
-                {/* Text Container */}
-                <div className="flex flex-col justify-center">
-                  <span className="font-sans font-extrabold text-lg md:text-xl leading-none text-white tracking-wider transition-colors duration-250 group-hover:text-primary-accent">
-                    AARG
-                  </span>
-                  <span className="font-sans text-[10px] tracking-[0.08em] text-secondary-accent/70 leading-none mt-1 uppercase font-medium whitespace-nowrap">
-                    Advanced Aerial Robotics Group
-                  </span>
-                </div>
-              </Link>
-            </div>
+              <div className="flex flex-col justify-center min-w-0">
+                <span className="font-sans font-extrabold text-sm sm:text-lg lg:text-xl leading-none text-white tracking-wider transition-colors duration-250 group-hover:text-primary-accent whitespace-nowrap">
+                  AARG
+                </span>
+                <span className="hidden sm:block font-sans text-[8px] md:text-[10px] tracking-[0.08em] text-secondary-accent/70 leading-none mt-1 uppercase font-medium whitespace-nowrap">
+                  Advanced Aerial Robotics Group
+                </span>
+              </div>
+            </Link>
 
             {/* Centered Desktop Navigation */}
-            <div className="hidden lg:flex flex-1 justify-center">
+            <div className="hidden lg:flex flex-1 justify-center min-w-0">
               <nav className="flex items-center gap-5 font-sans text-sm tracking-wide">
                 {navLinks.map((link) => {
                   const isActive = pathname === link.href;
@@ -147,33 +131,34 @@ export default function Header() {
               </nav>
             </div>
 
-            {/* Primary Call-to-Action - Cleaned & Toned Down */}
-            <div className="flex items-center shrink-0">
-              <Magnetic>
-                <Link
-                  href="/join"
-                  className="group relative overflow-hidden whitespace-nowrap font-sans text-sm font-semibold border border-primary-accent bg-primary-accent px-5 py-2 hover:bg-primary-accent/95 text-white transition-all duration-300 focus-hud rounded-md inline-flex items-center gap-2 hover:scale-[1.02] shadow-sm hover:shadow-[0_10px_30px_rgba(200,90,23,0.16)]"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    <ChevronRight className="w-4 h-4" />
-                    <span>JOIN US</span>
-                  </span>
-                </Link>
-              </Magnetic>
+            {/* Desktop JOIN US + Mobile hamburger — same row */}
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="hidden lg:block">
+                <Magnetic>
+                  <Link
+                    href="/join"
+                    className="group relative overflow-hidden whitespace-nowrap font-sans text-sm font-semibold border border-primary-accent bg-primary-accent px-5 py-2 hover:bg-primary-accent/95 text-white transition-all duration-300 focus-hud rounded-md inline-flex items-center gap-2 hover:scale-[1.02] shadow-sm hover:shadow-[0_10px_30px_rgba(200,90,23,0.16)]"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      <ChevronRight className="w-4 h-4" />
+                      <span>JOIN US</span>
+                    </span>
+                  </Link>
+                </Magnetic>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label={isOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isOpen}
+                className="lg:hidden p-2 border border-white/10 text-secondary-accent hover:border-primary-accent hover:text-primary-accent transition-colors focus-hud rounded-md"
+              >
+                {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
             </div>
           </div>
-
-          {/* Mobile Drawer Trigger */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="lg:hidden p-2 border border-white/10 text-secondary-accent hover:border-primary-accent hover:text-primary-accent transition-colors focus-hud rounded-md"
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
         </div>
-
-
       </header>
 
       {/* Mobile Sidebar overlay */}
@@ -193,7 +178,7 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[270px] z-42 bg-surface-mid border-l border-white/10 p-6 flex flex-col justify-between lg:hidden"
+              className="fixed top-0 right-0 bottom-0 w-[min(270px,85vw)] z-42 bg-surface-mid border-l border-white/10 p-6 flex flex-col justify-between lg:hidden"
             >
               <div className="flex flex-col gap-6">
                 <div className="flex items-center justify-between pb-4 border-b border-white/5">
@@ -201,6 +186,7 @@ export default function Header() {
                     {"UAV_SYS_NAV"}
                   </span>
                   <button
+                    type="button"
                     onClick={() => setIsOpen(false)}
                     aria-label="Close menu"
                     className="p-1 border border-white/5 text-secondary-accent hover:text-primary-accent hover:border-primary-accent transition-colors focus-hud rounded-md"

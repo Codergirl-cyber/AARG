@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
@@ -15,6 +15,7 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 
 export default function Home() {
   const shouldReduceMotion = useReducedMotion();
+  const [heroSrc, setHeroSrc] = useState("/images/hero/hero-mobile.mp4");
 
   // Scroll tracking for Hero section parallax
   const heroRef = useRef<HTMLDivElement>(null);
@@ -23,6 +24,19 @@ export default function Home() {
   // Parallax transforms (bypassed if reduced motion is requested)
   const yText = useTransform(scrollY, [0, 600], [0, 80]);
   const opacityHero = useTransform(scrollY, [0, 600], [1, 0]);
+
+  useEffect(() => {
+    const pickSource = () => {
+      setHeroSrc(
+        window.matchMedia("(max-width: 768px)").matches
+          ? "/images/hero/hero-mobile.mp4"
+          : "/images/hero/hero-desktop.mp4"
+      );
+    };
+    pickSource();
+    window.addEventListener("resize", pickSource);
+    return () => window.removeEventListener("resize", pickSource);
+  }, []);
 
   // States to trigger stats icon pulse animations when count finishes
 
@@ -36,13 +50,16 @@ export default function Home() {
         className="relative min-h-[90vh] flex items-center border-b border-secondary-accent/15 hud-grid hud-scanlines py-20 px-4 md:px-8 overflow-hidden"
       >
         <video
+          key={heroSrc}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-center z-0 brightness-75"
+          preload="metadata"
+          poster="/images/hero/hero-poster.jpg"
+          className="absolute inset-0 w-full h-full object-cover object-[center_40%] md:object-center z-0 brightness-75"
         >
-          <source src="/images/Hero-video.mp4/WhatsApp Video 2026-07-19 at 3.34.29 PM.mp4" type="video/mp4" />
+          <source src={heroSrc} type="video/mp4" />
         </video>
 
         {/* Darkening overlay for better text contrast */}

@@ -49,6 +49,10 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 /* Modern CAD Grid */
 .hud-grid {
   background-image: 
