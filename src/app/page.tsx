@@ -201,7 +201,7 @@ export default function Home() {
                     Ayush Sharma
                   </span>
                   <span className="font-sans text-xs text-secondary-accent/55">
-                    IROC-U Nav Lead
+                    Former IROC-U Nav Lead
                   </span>
                 </div>
               </div>
