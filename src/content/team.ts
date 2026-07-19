@@ -64,7 +64,7 @@ export const teamData: TeamData = {
       { name: "Somshekhar Hunasimarad", role: "Structures and Fabrication Lead", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/somshekhar-hunasimarad/", photoUrl: "/images/team/Someshkhar%20Hunasimarad.jpg" },
       { name: "Pushkar Lokhande", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/pushkar-lokhande-246b11311/", photoUrl: "/images/team/pushkar%20lokhande.png" },
       { name: "Karan Tikoo", role: "Member", subteam: "Members", photoUrl: "/images/team/Karan%20Tikoo.png" },
-      { name: "Vishwank Ramji", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/vishwank-ramji-6031a0359/" },
+      { name: "Vishwank Ramji", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/vishwank-ramji-6031a0359/", photoUrl: "/images/team/Vishwank%20Ramji.jfif" },
       { name: "Harshvardhan Karkera", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/harshvardhan-karkera-70479b386/", photoUrl: "/images/team/harsh.png" },
       { name: "Sarthak Chikte", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/sarthak-chikte-ba8780291/", photoUrl: "/images/team/sarthak%20c.png" },
       { name: "Sharal Vishvakarma", role: "Member", subteam: "Members", linkedinUrl: "https://www.linkedin.com/in/sharal-vishvkarma-b194792bb/", photoUrl: "/images/team/sharal.png" },
