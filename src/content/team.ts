@@ -57,7 +57,7 @@ export const teamData: TeamData = {
   ],
   leads: [
     { name: "Hitesh Patil", role: "NIDAR 2027 Lead", subteam: "Leadership", linkedinUrl: "https://www.linkedin.com/in/hitesh-patil07/", photoUrl: "/images/team/Hitesh%20Patil.png" },
-    { name: "Shreyas Kharade", role: "Aerodynamics Lead", subteam: "Leadership", photoUrl: "/images/team/Shreyas%20Kharade.png", linkedinUrl: "https://www.linkedin.com/in/shreyas-karade-273a42194/" },
+    { name: "Shreyas Karade", role: "Aerodynamics Lead", subteam: "Leadership", photoUrl: "/images/team/Shreyas%20Kharade.png", linkedinUrl: "https://www.linkedin.com/in/shreyas-karade-273a42194/" },
     { name: "Siddesh Kavitkar", role: "Avionics and Core Firmware Lead", subteam: "Leadership", linkedinUrl: "https://www.linkedin.com/in/siddhesh-kavitkar-1a3469339/", photoUrl: "/images/team/siddhesh%20Kavitkar.jpg" },
     { name: "Somshekhar Hunasimarad", role: "Structures and Fabrication Lead", subteam: "Leadership", linkedinUrl: "https://www.linkedin.com/in/somshekhar-hunasimarad/", photoUrl: "/images/team/Someshkhar%20Hunasimarad.jpg" },
   ],
