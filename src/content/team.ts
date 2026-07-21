@@ -58,7 +58,7 @@ export const teamData: TeamData = {
     },
     {
       name: "Mr Rahul Jadhav",
-      role: "Faculty Chair & Coordinator",
+      role: "Faculty Coordinator",
       subteam: "Faculty Advisor",
       linkedinUrl: "https://www.linkedin.com/in/rahul-jadhav-9571641b3/",
       photoUrl: "/images/team/Rahul%20Jadhav.png",
